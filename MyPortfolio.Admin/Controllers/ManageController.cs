@@ -55,12 +55,12 @@ namespace MyPortfolio.Admin.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Şifreniz değiştirildi."
+                : message == ManageMessageId.SetPasswordSuccess ? "Şifreniz ayarlandı."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "İki faktörlü kimlik doğrulama sağlayıcınız ayarlandı."
+                : message == ManageMessageId.Error ? "Bir hata oluştu."
+                : message == ManageMessageId.AddPhoneSuccess ? "Telefon numaranız eklendi."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Telefon numaranız kaldırıldı."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -190,7 +190,7 @@ namespace MyPortfolio.Admin.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.AddPhoneSuccess });
             }
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
+            ModelState.AddModelError("", "Telefon doğrulanamadı");
             return View(model);
         }
 
@@ -281,8 +281,8 @@ namespace MyPortfolio.Admin.Controllers
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                message == ManageMessageId.RemoveLoginSuccess ? "Harici giriş kaldırıldı."
+                : message == ManageMessageId.Error ? "Bir hata oluştu."
                 : "";
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user == null)
