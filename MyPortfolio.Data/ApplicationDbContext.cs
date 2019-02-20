@@ -1,4 +1,5 @@
-﻿using MyPortfolio.Data.Builders;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using MyPortfolio.Data.Builders;
 using MyPortfolio.Model;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,16 @@ using System.Threading.Tasks;
 
 namespace MyPortfolio.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() : base("name=DefaultConnection")
+        public ApplicationDbContext()
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
+        }
 
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
         }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }

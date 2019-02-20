@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MyPortfolio.Admin.Models;
+using MyPortfolio.Data;
+using MyPortfolio.Model;
 
 namespace MyPortfolio.Admin
 {
