@@ -18,5 +18,7 @@ namespace MyPortfolio.Model
             // Add custom user claims here
             return userIdentity;
         }
+        public string Photo { get; set; }
+        public string FullName { get; set; }
     }
 }
