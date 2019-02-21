@@ -87,7 +87,7 @@ namespace MyPortfolio.Admin.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "Geçersiz giriş denemesi.");
                     return View(model);
             }
         }
@@ -130,7 +130,7 @@ namespace MyPortfolio.Admin.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid code.");
+                    ModelState.AddModelError("", "Geçersiz kod.");
                     return View(model);
             }
         }
