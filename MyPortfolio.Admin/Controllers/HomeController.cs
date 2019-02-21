@@ -15,7 +15,7 @@ namespace MyPortfolio.Admin.Controllers
     {
         private readonly ICategoryService categoryService;
 
-        public HomeController(ICategoryService categoryService)
+        public HomeController(ApplicationUserManager userManager, ICategoryService categoryService)
         {
             this.categoryService = categoryService;
         }
