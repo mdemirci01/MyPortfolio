@@ -45,6 +45,7 @@ namespace MyPortfolio.Data
 
         public void Insert(T entity)
         {
+            entity.Id = Guid.NewGuid();
             entity.CreatedAt = DateTime.Now;
             entity.CreatedBy = "username";
             entity.UpdatedAt = DateTime.Now;
