@@ -1,6 +1,10 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using MyPortfolio.Data;
+using MyPortfolio.Model;
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
@@ -53,6 +57,14 @@ namespace MyPortfolio.Admin
             builder.RegisterType(typeof(PageService)).As(typeof(IPageService)).InstancePerDependency();
             builder.RegisterType(typeof(FeedbackService)).As(typeof(IFeedbackService)).InstancePerDependency();
 
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => new UserStore<ApplicationUser>(c.Resolve<ApplicationDbContext>())).AsImplementedInterfaces().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).As<IAuthenticationManager>();
+            builder.Register(c => new IdentityFactoryOptions<ApplicationUserManager>
+            {
+                DataProtectionProvider = new Microsoft.Owin.Security.DataProtection.DpapiDataProtectionProvider("Application​")
+            });
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
