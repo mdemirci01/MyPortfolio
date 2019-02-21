@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPortfolio.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,21 @@ namespace MyPortfolio.Admin.Controllers
     [Authorize]
     public class HomeController : Controller
     {
+        private readonly ICategoryService categoryService;
+
+        public HomeController(ICategoryService categoryService)
+        {
+            this.categoryService = categoryService;
+        }
+
         public ActionResult Index()
         {
+            
+            var category = categoryService.GetAll();
+            ViewBag.Categories = category;
             return View();
+
+
         }
 
         public ActionResult About()
