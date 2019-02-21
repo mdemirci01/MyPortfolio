@@ -46,11 +46,12 @@ namespace MyPortfolio.Admin
 
             // generic repository geçici instance olarak register et
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerDependency();
-
+            builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
             //servisleri register et
             builder.RegisterType(typeof(PostService)).As(typeof(IPostService)).InstancePerDependency();
             builder.RegisterType(typeof(CategoryService)).As(typeof(ICategoryService)).InstancePerDependency();
-            builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerDependency();
+            builder.RegisterType(typeof(PageService)).As(typeof(IPageService)).InstancePerDependency();
+            builder.RegisterType(typeof(FeedbackService)).As(typeof(IFeedbackService)).InstancePerDependency();
 
 
             // Set the dependency resolver to be Autofac.
