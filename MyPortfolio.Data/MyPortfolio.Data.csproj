@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Builders\CategoryBuilder.cs" />
+    <Compile Include="Builders\PageBuilder.cs" />
     <Compile Include="Builders\PostBuilder.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
@@ -74,6 +75,14 @@
     <Compile Include="Migrations\201902210957543_AddPropToApplicationUser.cs" />
     <Compile Include="Migrations\201902210957543_AddPropToApplicationUser.Designer.cs">
       <DependentUpon>201902210957543_AddPropToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902210846208_IdFix.cs" />
+    <Compile Include="Migrations\201902210846208_IdFix.Designer.cs">
+      <DependentUpon>201902210846208_IdFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902211013004_PageController.cs" />
+    <Compile Include="Migrations\201902211013004_PageController.Designer.cs">
+      <DependentUpon>201902211013004_PageController.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +105,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.resx">
       <DependentUpon>201902201004205_AddDataAnnotationToBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210846208_IdFix.resx">
+      <DependentUpon>201902210846208_IdFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902211013004_PageController.resx">
+      <DependentUpon>201902211013004_PageController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902210827547_AddPhotoPropToApplicationUser.resx">
       <DependentUpon>201902210827547_AddPhotoPropToApplicationUser.cs</DependentUpon>
