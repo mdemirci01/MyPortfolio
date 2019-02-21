@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MyPortfolio.Data;
+using MyPortfolio.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +18,7 @@ namespace MyPortfolio.Admin
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
         }
     }
 }

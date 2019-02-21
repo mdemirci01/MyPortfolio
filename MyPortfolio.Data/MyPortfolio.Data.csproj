@@ -67,6 +67,14 @@
     <Compile Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.Designer.cs">
       <DependentUpon>201902201004205_AddDataAnnotationToBaseEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902210827547_AddPhotoPropToApplicationUser.cs" />
+    <Compile Include="Migrations\201902210827547_AddPhotoPropToApplicationUser.Designer.cs">
+      <DependentUpon>201902210827547_AddPhotoPropToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902210957543_AddPropToApplicationUser.cs" />
+    <Compile Include="Migrations\201902210957543_AddPropToApplicationUser.Designer.cs">
+      <DependentUpon>201902210957543_AddPropToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -88,6 +96,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.resx">
       <DependentUpon>201902201004205_AddDataAnnotationToBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210827547_AddPhotoPropToApplicationUser.resx">
+      <DependentUpon>201902210827547_AddPhotoPropToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210957543_AddPropToApplicationUser.resx">
+      <DependentUpon>201902210957543_AddPropToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
