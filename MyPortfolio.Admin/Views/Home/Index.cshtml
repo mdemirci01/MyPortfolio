@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<MyPortfolio.Model.ApplicationUser>
+@{
     ViewBag.Title = "Home Page";
 }
 <!-- ============================================================== -->
@@ -7,13 +8,13 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="page-header">
-            <h2 class="pageheader-title">E-commerce Dashboard Template </h2>
+            <h2 class="pageheader-title">Yönetim Paneli</h2>
             <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
             <div class="page-breadcrumb">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">E-Commerce Dashboard Template</li>
+                        <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Panel</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Yönetim Paneli</li>
                     </ol>
                 </nav>
             </div>
@@ -89,7 +90,7 @@
         <!-- ============================================================== -->
         <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
             <div class="card">
-                <h5 class="card-header">Recent Orders</h5>
+                <h5 class="card-header">Son Yazılar</h5>
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table">
@@ -176,19 +177,24 @@
         <!-- ============================================================== -->
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
             <div class="card">
-                <h5 class="card-header">Customer Acquisition</h5>
+                <h5 class="card-header">Kategoriler</h5>
                 <div class="card-body">
-                    <div class="ct-chart ct-golden-section" style="height: 354px;"></div>
-                    <div class="text-center">
-                        <span class="legend-item mr-2">
-                            <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                            <span class="legend-text">Returning</span>
-                        </span>
-                        <span class="legend-item mr-2">
-                            <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                            <span class="legend-text">First Time</span>
-                        </span>
-                    </div>
+                    <table>
+                        <tr>
+                            <th>
+                                Kategoriler
+                            </th>
+                        </tr>
+
+                        @foreach (var item in ViewBag.Categories)
+                        {
+                            <tr>
+                                <td>
+                                    <strong>@item.Name</strong>
+                                </td>
+                            </tr>
+                        }
+                    </table>
                 </div>
             </div>
         </div>

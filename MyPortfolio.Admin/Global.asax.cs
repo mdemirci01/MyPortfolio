@@ -20,6 +20,7 @@ namespace MyPortfolio.Admin
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             var builder = new ContainerBuilder();
 
             // Register your MVC controllers. (MvcApplication is the name of
@@ -39,18 +40,23 @@ namespace MyPortfolio.Admin
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
 
-            // OPTIONAL: Enable action method parameter injection (RARE).
+
+            //db context 'i  mi scoped( yani request bazlı) olarak register et
+            builder.RegisterType<ApplicationDbContext>().InstancePerRequest();
+
+            // generic repository geçici instance olarak register et
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerDependency();
-            builder.RegisterType(typeof(NotificationService)).As(typeof(INotificationService)).InstancePerDependency();
-            builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerDependency();
+            builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
+            //servisleri register et
+            builder.RegisterType(typeof(PostService)).As(typeof(IPostService)).InstancePerDependency();
+            builder.RegisterType(typeof(CategoryService)).As(typeof(ICategoryService)).InstancePerDependency();
+            builder.RegisterType(typeof(PageService)).As(typeof(IPageService)).InstancePerDependency();
+            builder.RegisterType(typeof(FeedbackService)).As(typeof(IFeedbackService)).InstancePerDependency();
+
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
-
-
-
         }
     }
 }
