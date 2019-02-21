@@ -10,7 +10,7 @@ namespace MyPortfolio.Model
 {
     public class BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       
         public Guid Id { get; set; }
         [Display(Name = "Ekleyen Kişi")]
         public string CreatedBy { get; set; }

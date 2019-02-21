@@ -40,14 +40,19 @@ namespace MyPortfolio.Admin
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
 
+
+            //db context 'i  mi scoped( yani request bazlı) olarak register et
             builder.RegisterType<ApplicationDbContext>().InstancePerRequest();
 
+            // generic repository geçici instance olarak register et
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerDependency();
 
+            //servisleri register et
             builder.RegisterType(typeof(PostService)).As(typeof(IPostService)).InstancePerDependency();
             builder.RegisterType(typeof(CategoryService)).As(typeof(ICategoryService)).InstancePerDependency();
-            builder.RegisterType(typeof(FeedbackService)).As(typeof(IFeedbackService)).InstancePerDependency();
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
+            builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerDependency();
+
+
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

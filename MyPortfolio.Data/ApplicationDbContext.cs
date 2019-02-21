@@ -24,12 +24,14 @@ namespace MyPortfolio.Data
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
+        public virtual DbSet<Page> Pages { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             new PostBuilder(modelBuilder.Entity<Post>());
             new CategoryBuilder(modelBuilder.Entity<Category>());
             new FeedbackBuilder(modelBuilder.Entity<Feedback>());
+            new PageBuilder(modelBuilder.Entity<Page>());
         }
     }
 }
