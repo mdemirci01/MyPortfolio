@@ -36,8 +36,8 @@ namespace MyPortfolio.Admin.Controllers
             ViewBag.CategoryCount = categoryService.GetAll().Count();
             ViewBag.PageCount = pageService.GetAll().Count();
             ViewBag.UserCount = userManager.Users.Count();
-            //var user = userManager.FindByName(User.Identity.Name);
-            //ViewBag.CurrentUser = user;
+            var user = userManager.FindByName(User.Identity.Name);
+            ViewBag.CurrentUser = user.FullName;
             return View();
 
 
