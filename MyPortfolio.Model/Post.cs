@@ -11,9 +11,8 @@ namespace MyPortfolio.Model
     {
         [Display(Name = "Başlık")]
         public string Title { get; set; }
-        [Display(Name = "Açıklama")]
-        public string Description { get; set; }
-        
+        [Display(Name = "Açıklama")]             
+        public string Description { get; set; }        
         public Guid? CategoryId { get; set; }
         public virtual Category Category { get; set; }
     }
