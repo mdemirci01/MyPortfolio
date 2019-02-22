@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
-<h2>Edit</h2>
+<h2>Sayfa Düzenle</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Page</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
@@ -58,7 +58,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Listeye Dön", "Index")
 </div>
 
 @section Scripts {
