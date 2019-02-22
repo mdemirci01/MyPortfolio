@@ -46,6 +46,7 @@
     <Compile Include="NotificationService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

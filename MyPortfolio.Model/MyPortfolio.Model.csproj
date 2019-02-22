@@ -61,6 +61,7 @@
     <Compile Include="Feedback.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Post.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
