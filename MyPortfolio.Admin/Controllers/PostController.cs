@@ -30,6 +30,7 @@ namespace MyPortfolio.Admin.Controllers
             return View(post);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(Post post)
         {
             if (ModelState.IsValid)
