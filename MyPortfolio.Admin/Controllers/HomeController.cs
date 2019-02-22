@@ -14,10 +14,11 @@ namespace MyPortfolio.Admin.Controllers
     public class HomeController : Controller
     {
         private readonly ICategoryService categoryService;
-
+        private readonly ApplicationUserManager userManager;
         public HomeController(ApplicationUserManager userManager, ICategoryService categoryService)
         {
             this.categoryService = categoryService;
+            this.userManager = userManager;
         }
 
         public ActionResult Index()
@@ -25,8 +26,9 @@ namespace MyPortfolio.Admin.Controllers
             
             var category = categoryService.GetAll();
             ViewBag.Categories = category;
-            //var user = userManager.FindByName(User.Identity.Name);
-            //ViewBag.CurrentUser = user;
+
+            var user = userManager.FindByName(User.Identity.Name);
+            ViewBag.CurrentUser = user.FullName;
             return View();
 
 
