@@ -25,6 +25,7 @@ namespace MyPortfolio.Data
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
+        public virtual DbSet<Notification> Notifications { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -32,6 +33,7 @@ namespace MyPortfolio.Data
             new CategoryBuilder(modelBuilder.Entity<Category>());
             new FeedbackBuilder(modelBuilder.Entity<Feedback>());
             new PageBuilder(modelBuilder.Entity<Page>());
+            new NotificationBuilder(modelBuilder.Entity<Notification>());
         }
     }
 }
