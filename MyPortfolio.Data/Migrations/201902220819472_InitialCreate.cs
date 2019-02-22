@@ -58,6 +58,21 @@ namespace MyPortfolio.Data.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Notifications",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Message = c.String(nullable: false, maxLength: 200),
+                        UserName = c.String(nullable: false, maxLength: 200),
+                        CreatedBy = c.String(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        UpdatedBy = c.String(),
+                        UpdatedAt = c.DateTime(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Pages",
                 c => new
                     {
@@ -164,6 +179,7 @@ namespace MyPortfolio.Data.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Pages");
+            DropTable("dbo.Notifications");
             DropTable("dbo.Feedbacks");
             DropTable("dbo.Posts");
             DropTable("dbo.Categories");
