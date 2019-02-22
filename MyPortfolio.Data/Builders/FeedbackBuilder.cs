@@ -10,7 +10,6 @@ namespace MyPortfolio.Data.Builders
 {
     public class FeedbackBuilder
     {
-        private EntityTypeConfiguration<Feedback> entityTypeConfiguration;
 
         public FeedbackBuilder(EntityTypeConfiguration<Feedback> entity)
         {

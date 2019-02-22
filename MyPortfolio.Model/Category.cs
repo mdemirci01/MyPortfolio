@@ -13,8 +13,10 @@ namespace MyPortfolio.Model
         {
             Posts = new HashSet<Post>();
         }
-        [Display(Name = "Ad")]
+        [Display(Name ="Kategori Adı")]
         public string Name { get; set; }
+        [Display(Name = "Kategori Açıklama")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
     }
