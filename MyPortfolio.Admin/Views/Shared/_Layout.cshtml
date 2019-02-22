@@ -27,7 +27,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">MYPORTFOLIO</a>
+                <a class="navbar-brand" href="/home/index">MYPORTFOLIO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -94,12 +94,26 @@
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
-                                    <h5 class="mb-0 text-white nav-user-name">@ViewBag.CurrentUser</h5>
-                                    @*<span class="status"></span><span class="ml-2">Available</span>*@
+
+                                    @if (@ViewBag.CurrentUser != null)
+                                    {
+                                        <h5 class="mb-0 text-white nav-user-name">@ViewBag.CurrentUser</h5>
+
+                                    }
+                                    else
+                                    {
+                                        <span class="status"></span><span class="ml-2">Lütfen tam isminizi giriniz.</span>
+                                    }
+
                                 </div>
                                 <a class="dropdown-item" href="@Url.Action("Index","Manage")"><i class="fas fa-user mr-2"></i>Hesabım</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Çıkış</a>
+                                <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="fas fa-power-off mr-2"></i>Çıkış</a>
                             </div>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                            @Html.AntiForgeryToken()
+                            
+                            }
                         </li>
                     </ul>
                 </div>
