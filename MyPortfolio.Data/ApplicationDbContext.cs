@@ -23,6 +23,7 @@ namespace MyPortfolio.Data
         }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
