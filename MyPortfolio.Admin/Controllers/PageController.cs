@@ -61,6 +61,7 @@ namespace MyPortfolio.Admin.Controllers
                 var model = pageService.Find(page.Id);
                 model.Title = page.Title;
                 model.Description = page.Description;
+                model.IsActive = page.IsActive;
                 pageService.Update(model);
                 return RedirectToAction("Index");
             }
