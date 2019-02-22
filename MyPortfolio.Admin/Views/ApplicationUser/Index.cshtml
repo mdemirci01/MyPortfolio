@@ -7,7 +7,7 @@
 <h2>Kullanıcılar</h2>
 
 <p>
-    <a href="@Url.Action("Create")" class="btn btn-link">Yeni Kullanıcı Ekle</a>
+    @Html.ActionLink("Yeni Kullanıcı Ekle", "Register", "Account", new { @class="btn btn-primary btn-xs"})
 </p>
 <table class="table">
     <tr>
@@ -22,11 +22,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        
         <td>
-            <a href="@Url.Action("Edit", new { id=item.Id})" class="btn btn-primary btn-sm">Düzenle</a>
-            <a href="@Url.Action("Details", new { id=item.Id})" class="btn btn-dark btn-sm">Ayrıntılar</a>
-            <a href="@Url.Action("Delete", new { id=item.Id})" class="btn btn-danger btn-sm">Sil</a>
+            <a href="@Url.Action("Edit", new { id = item.Id})" class="btn btn-primary btn-xs">Düzenle</a>
+            <a href="@Url.Action("Delete", new { id = item.Id})" class="btn btn-danger btn-xs">Sil</a>
         </td>
     </tr>
 }
