@@ -43,12 +43,21 @@ namespace MyPortfolio.Admin.Controllers
                 _userManager = value;
             }
         }
-
         // GET: ApplicationUser
         public ActionResult Index()
         {
             var users = UserManager.Users.ToList();
             return View(users);
+        }
+        public ActionResult Delete(string id)
+        {
+            var userToDelete = UserManager.Users.FirstOrDefault(f => f.Id == id);
+            if (userToDelete == null)
+            {
+                return HttpNotFound();
+            }
+            UserManager.Delete(userToDelete);
+            return RedirectToAction("Index");
         }
     }
 }
