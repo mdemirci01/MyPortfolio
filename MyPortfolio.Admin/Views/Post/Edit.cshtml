@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+<script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
     <div class="form-horizontal">
         <h4>Post</h4>
         <hr />
@@ -28,9 +28,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { @class = "form-control"  })
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
+            <script>
+                CKEDITOR.replace('Description');
+            </script>
         </div>
 
         
