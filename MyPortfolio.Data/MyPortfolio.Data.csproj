@@ -56,16 +56,14 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Builders\CategoryBuilder.cs" />
+    <Compile Include="Builders\PageBuilder.cs" />
+    <Compile Include="Builders\FeedbackBuilder.cs" />
     <Compile Include="Builders\PostBuilder.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201902200723288_InitialCreate.cs" />
-    <Compile Include="Migrations\201902200723288_InitialCreate.Designer.cs">
-      <DependentUpon>201902200723288_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.cs" />
-    <Compile Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.Designer.cs">
-      <DependentUpon>201902201004205_AddDataAnnotationToBaseEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201902211059220_InitialCreate.cs" />
+    <Compile Include="Migrations\201902211059220_InitialCreate.Designer.cs">
+      <DependentUpon>201902211059220_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,11 +81,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902200723288_InitialCreate.resx">
-      <DependentUpon>201902200723288_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.resx">
-      <DependentUpon>201902201004205_AddDataAnnotationToBaseEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902211059220_InitialCreate.resx">
+      <DependentUpon>201902211059220_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
