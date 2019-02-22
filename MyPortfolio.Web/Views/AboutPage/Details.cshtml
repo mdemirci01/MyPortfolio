@@ -1,23 +1,15 @@
-﻿@model MyPortfolio.Model.Post
+﻿@model MyPortfolio.Model.Page
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Detay</h2>
+<h2>Ayrıntılar</h2>
 
 <div>
-    <h4>Post</h4>
+    <h4>Page</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -31,17 +23,7 @@
         </dt>
 
         <dd>
-            @Html.Raw(Model.Description)
-        </dd>
-
-       
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
+            @Html.DisplayFor(model => model.Description)
         </dd>
 
         <dt>
@@ -56,5 +38,5 @@
 </div>
 <p>
     @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Listeye geri dön", "Index")
+    @Html.ActionLink("Listeye Dön", "Index")
 </p>
