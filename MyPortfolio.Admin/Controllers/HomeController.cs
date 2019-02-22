@@ -14,10 +14,17 @@ namespace MyPortfolio.Admin.Controllers
     public class HomeController : Controller
     {
         private readonly ICategoryService categoryService;
+        private readonly IPostService postService;
+        private readonly IPageService pageService;
+        private readonly ApplicationUserManager userManager;
 
-        public HomeController(ApplicationUserManager userManager, ICategoryService categoryService)
+        public HomeController(ApplicationUserManager userManager, ICategoryService categoryService,IPostService postService,IPageService pageService)
         {
             this.categoryService = categoryService;
+            this.postService = postService;
+            this.pageService = pageService;
+            this.userManager = userManager;
+           
         }
 
         public ActionResult Index()
@@ -25,12 +32,17 @@ namespace MyPortfolio.Admin.Controllers
             
             var category = categoryService.GetAll();
             ViewBag.Categories = category;
+            ViewBag.PostCount = postService.GetAll().Count();
+            ViewBag.CategoryCount = categoryService.GetAll().Count();
+            ViewBag.PageCount = pageService.GetAll().Count();
+            ViewBag.UserCount = userManager.Users.Count();
             //var user = userManager.FindByName(User.Identity.Name);
             //ViewBag.CurrentUser = user;
             return View();
 
 
         }
+   
 
         public ActionResult About()
         {
