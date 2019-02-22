@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Kategori Sayfası</h2>
+<h2>Kategoriler</h2>
 
 <p>
-    <button type="button"> @Html.ActionLink("Yeni  Kategori Ekle", "Create") </button>
+    <button type="button" class="btn btn-success"> @Html.ActionLink("Yeni  Kategori Ekle", "Create") </button>
    
 </p>
 <table class="table">
@@ -15,21 +15,8 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </th>
+        
+       
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
@@ -41,26 +28,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedAt)
-        </td>
+        
+      
         <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
         <td>
-            <button type="button"> @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) </button>
+            <button type="button" > @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) </button>
             <button type="button">  @Html.ActionLink("DETAY", "Details", new { id = item.Id })  </button>
             <button type="button">   @Html.ActionLink("SİL", "Delete", new { id = item.Id })  </button>
 

@@ -19,7 +19,20 @@ namespace MyPortfolio.Web.Controllers
 
             return View();
         }
+        public ActionResult Portfolio()
+        {
 
+            ViewBag.Message = "Your portfolio page.";
+
+            return View();
+        }
+        public ActionResult Blog()
+        {
+
+            ViewBag.Message = "Your  Blog page.";
+
+            return View();
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
