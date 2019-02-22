@@ -56,16 +56,19 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Builders\CategoryBuilder.cs" />
+    <Compile Include="Builders\NotificationBuilder.cs" />
+    <Compile Include="Builders\PageBuilder.cs" />
+    <Compile Include="Builders\FeedbackBuilder.cs" />
     <Compile Include="Builders\PostBuilder.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201902200723288_InitialCreate.cs" />
-    <Compile Include="Migrations\201902200723288_InitialCreate.Designer.cs">
-      <DependentUpon>201902200723288_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201902211059220_InitialCreate.cs" />
+    <Compile Include="Migrations\201902211059220_InitialCreate.Designer.cs">
+      <DependentUpon>201902211059220_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.cs" />
-    <Compile Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.Designer.cs">
-      <DependentUpon>201902201004205_AddDataAnnotationToBaseEntity.cs</DependentUpon>
+    <Compile Include="Migrations\201902220723558_InitialCreate1.cs" />
+    <Compile Include="Migrations\201902220723558_InitialCreate1.Designer.cs">
+      <DependentUpon>201902220723558_InitialCreate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201902220702404_RemoveBaseEntityAnnotation.cs" />
     <Compile Include="Migrations\201902220702404_RemoveBaseEntityAnnotation.Designer.cs">
@@ -87,11 +90,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902200723288_InitialCreate.resx">
-      <DependentUpon>201902200723288_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902211059220_InitialCreate.resx">
+      <DependentUpon>201902211059220_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902201004205_AddDataAnnotationToBaseEntity.resx">
-      <DependentUpon>201902201004205_AddDataAnnotationToBaseEntity.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902220723558_InitialCreate1.resx">
+      <DependentUpon>201902220723558_InitialCreate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902220702404_RemoveBaseEntityAnnotation.resx">
       <DependentUpon>201902220702404_RemoveBaseEntityAnnotation.cs</DependentUpon>

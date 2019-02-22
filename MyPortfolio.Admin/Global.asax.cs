@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -45,12 +44,19 @@ namespace MyPortfolio.Admin
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
 
+
+            //db context 'i  mi scoped( yani request bazlı) olarak register et
             builder.RegisterType<ApplicationDbContext>().InstancePerRequest();
-            builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
+
+            // generic repository geçici instance olarak register et
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerDependency();
+            builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
+            //servisleri register et
             builder.RegisterType(typeof(PostService)).As(typeof(IPostService)).InstancePerDependency();
             builder.RegisterType(typeof(CategoryService)).As(typeof(ICategoryService)).InstancePerDependency();
-
+            builder.RegisterType(typeof(PageService)).As(typeof(IPageService)).InstancePerDependency();
+            builder.RegisterType(typeof(FeedbackService)).As(typeof(IFeedbackService)).InstancePerDependency();
+            builder.RegisterType(typeof(NotificationService)).As(typeof(INotificationService)).InstancePerDependency();
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
             builder.Register(c => new UserStore<ApplicationUser>(c.Resolve<ApplicationDbContext>())).AsImplementedInterfaces().InstancePerRequest();
