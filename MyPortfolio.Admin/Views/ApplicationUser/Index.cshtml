@@ -5,10 +5,10 @@
 }
 
 <h2>Kullanıcılar</h2>
+
 @if (TempData["CurrentUser"] != null)
 {
     <script type="text/javascript">
-
         window.onload = function () {
                 alert("@TempData["CurrentUser"]");
             };
@@ -17,19 +17,19 @@
 @if (TempData["NullUser"] != null)
 {
     <script type="text/javascript">
-
         window.onload = function () {
                 alert("@TempData["NullUser"]");
             };
     </script>
 }
+
 <p>
     <a href="@Url.Action("Register", "Account")" class="btn btn-primary btn-xs">Yeni Kullanıcı Ekle</a>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            E-Posta
         </th>
         <th></th>
     </tr>
