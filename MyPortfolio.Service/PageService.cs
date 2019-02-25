@@ -15,6 +15,8 @@ namespace MyPortfolio.Service
         void Delete(Page page);
         void Delete(Guid id);
         Page Find(Guid id);
+        Page FindByTitle(string title);
+
         IEnumerable<Page> GetAll();
         IEnumerable<Page> GetAllByTitle(string title);
         IEnumerable<Page> Search(string title);
@@ -48,6 +50,11 @@ namespace MyPortfolio.Service
         public Page Find(Guid id)
         {
             return pageRepository.Find(id);
+        }
+
+        public Page FindByTitle(string title)
+        {
+            return pageRepository.Find(e => e.Title.Contains(title));
         }
 
         public IEnumerable<Page> GetAll()
