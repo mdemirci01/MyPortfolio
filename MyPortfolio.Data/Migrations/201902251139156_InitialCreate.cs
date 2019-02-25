@@ -58,6 +58,21 @@ namespace MyPortfolio.Data.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
+                "dbo.Newsletters",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        FullName = c.String(maxLength: 200),
+                        Email = c.String(nullable: false, maxLength: 100),
+                        CreatedBy = c.String(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        UpdatedBy = c.String(),
+                        UpdatedAt = c.DateTime(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Notifications",
                 c => new
                     {
@@ -79,6 +94,42 @@ namespace MyPortfolio.Data.Migrations
                         Id = c.Guid(nullable: false),
                         Title = c.String(nullable: false, maxLength: 100),
                         Description = c.String(nullable: false, maxLength: 3000),
+                        CreatedBy = c.String(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        UpdatedBy = c.String(),
+                        UpdatedAt = c.DateTime(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Projects",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 100),
+                        ShortDescription = c.String(nullable: false, maxLength: 500),
+                        Description = c.String(),
+                        Photo = c.String(maxLength: 200),
+                        Year = c.Int(nullable: false),
+                        GithubLink = c.String(),
+                        TechnologyId = c.Guid(),
+                        CreatedBy = c.String(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        UpdatedBy = c.String(),
+                        UpdatedAt = c.DateTime(nullable: false),
+                        IsActive = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Technologies", t => t.TechnologyId)
+                .Index(t => t.TechnologyId);
+            
+            CreateTable(
+                "dbo.Technologies",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(nullable: false, maxLength: 50),
                         CreatedBy = c.String(),
                         CreatedAt = c.DateTime(nullable: false),
                         UpdatedBy = c.String(),
@@ -165,6 +216,7 @@ namespace MyPortfolio.Data.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Projects", "TechnologyId", "dbo.Technologies");
             DropForeignKey("dbo.Posts", "CategoryId", "dbo.Categories");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
@@ -172,14 +224,18 @@ namespace MyPortfolio.Data.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Projects", new[] { "TechnologyId" });
             DropIndex("dbo.Posts", new[] { "CategoryId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Technologies");
+            DropTable("dbo.Projects");
             DropTable("dbo.Pages");
             DropTable("dbo.Notifications");
+            DropTable("dbo.Newsletters");
             DropTable("dbo.Feedbacks");
             DropTable("dbo.Posts");
             DropTable("dbo.Categories");

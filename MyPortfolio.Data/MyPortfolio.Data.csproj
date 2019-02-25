@@ -65,21 +65,9 @@
     <Compile Include="Builders\TechnologyBuilder.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Migrations\201902220819472_InitialCreate.cs" />
-    <Compile Include="Migrations\201902220819472_InitialCreate.Designer.cs">
-      <DependentUpon>201902220819472_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902221141130_AddProjectModule.cs" />
-    <Compile Include="Migrations\201902221141130_AddProjectModule.Designer.cs">
-      <DependentUpon>201902221141130_AddProjectModule.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902250726221_forNewsletter.cs" />
-    <Compile Include="Migrations\201902250726221_forNewsletter.Designer.cs">
-      <DependentUpon>201902250726221_forNewsletter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902250942336_AddTechnologyModule.cs" />
-    <Compile Include="Migrations\201902250942336_AddTechnologyModule.Designer.cs">
-      <DependentUpon>201902250942336_AddTechnologyModule.cs</DependentUpon>
+    <Compile Include="Migrations\201902251139156_InitialCreate.cs" />
+    <Compile Include="Migrations\201902251139156_InitialCreate.Designer.cs">
+      <DependentUpon>201902251139156_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,17 +85,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902220819472_InitialCreate.resx">
-      <DependentUpon>201902220819472_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902221141130_AddProjectModule.resx">
-      <DependentUpon>201902221141130_AddProjectModule.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902250726221_forNewsletter.resx">
-      <DependentUpon>201902250726221_forNewsletter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902250942336_AddTechnologyModule.resx">
-      <DependentUpon>201902250942336_AddTechnologyModule.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902251139156_InitialCreate.resx">
+      <DependentUpon>201902251139156_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
