@@ -17,6 +17,7 @@ namespace MyPortfolio.Service
         Page Find(Guid id);
         IEnumerable<Page> GetAll();
         IEnumerable<Page> GetAllByTitle(string title);
+        IEnumerable<Page> Search(string title);
     }
 
     public class PageService : IPageService
@@ -70,6 +71,11 @@ namespace MyPortfolio.Service
         {
             pageRepository.Insert(page);
             unitOfWork.SaveChanges();
+        }
+
+        public IEnumerable<Page> Search(string title)
+        {
+            return pageRepository.GetAll(e => e.Title.Contains(title));
         }
 
         public void Update(Page page)

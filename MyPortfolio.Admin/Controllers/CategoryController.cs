@@ -71,6 +71,7 @@ namespace MyPortfolio.Admin.Controllers
                 var model = categoryService.Find(category.Id);
                 model.Name = category.Name;
                 model.Description = category.Description;
+                model.IsActive = category.IsActive;
                 categoryService.Update(model);
                 return RedirectToAction("Index");
 
