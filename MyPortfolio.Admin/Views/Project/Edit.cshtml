@@ -1,14 +1,13 @@
 ﻿@model MyPortfolio.Model.Project
 
 @{
-    ViewBag.Title = "Proje Oluştur";
+    ViewBag.Title = "Proje Düzenle";
 }
 
-<h2>Proje Oluştur</h2>
+<h2>Proje Düzenle</h2>
 <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -16,6 +15,8 @@
         <h4>Projeler</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -35,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new {  @class = "form-control ckeditor"  })
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control ckeditor" } )
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -84,7 +85,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Oluştur" class="btn btn-primary" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </div>
     </div>
