@@ -70,9 +70,16 @@ namespace MyPortfolio.Admin.Controllers
             postService.Delete(id);
             return RedirectToAction("index");
         }
+       
         public ActionResult Details(Guid id)
         {
             var post = postService.Find(id);
+            if (post == null)
+            {
+                return HttpNotFound();
+
+            }
+           
             return View(post);
         }
     }

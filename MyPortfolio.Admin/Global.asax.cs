@@ -59,6 +59,7 @@ namespace MyPortfolio.Admin
             builder.RegisterType(typeof(NotificationService)).As(typeof(INotificationService)).InstancePerDependency();
             builder.RegisterType(typeof(ProjectService)).As(typeof(IProjectService)).InstancePerDependency();
             builder.RegisterType(typeof(NewsletterService)).As(typeof(INewsletterService)).InstancePerDependency();
+            builder.RegisterType(typeof(TechnologyService)).As(typeof(ITechnologyService)).InstancePerDependency();
             builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
             builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
             builder.Register(c => new UserStore<ApplicationUser>(c.Resolve<ApplicationDbContext>())).AsImplementedInterfaces().InstancePerRequest();

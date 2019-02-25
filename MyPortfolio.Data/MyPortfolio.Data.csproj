@@ -62,6 +62,7 @@
     <Compile Include="Builders\FeedbackBuilder.cs" />
     <Compile Include="Builders\PostBuilder.cs" />
     <Compile Include="Builders\ProjectBuilder.cs" />
+    <Compile Include="Builders\TechnologyBuilder.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Migrations\201902220819472_InitialCreate.cs" />
@@ -75,6 +76,10 @@
     <Compile Include="Migrations\201902250726221_forNewsletter.cs" />
     <Compile Include="Migrations\201902250726221_forNewsletter.Designer.cs">
       <DependentUpon>201902250726221_forNewsletter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902250942336_AddTechnologyModule.cs" />
+    <Compile Include="Migrations\201902250942336_AddTechnologyModule.Designer.cs">
+      <DependentUpon>201902250942336_AddTechnologyModule.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902250726221_forNewsletter.resx">
       <DependentUpon>201902250726221_forNewsletter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902250942336_AddTechnologyModule.resx">
+      <DependentUpon>201902250942336_AddTechnologyModule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
