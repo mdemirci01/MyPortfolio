@@ -19,6 +19,14 @@ namespace MyPortfolio.Web.Controllers
 
             return View();
         }
+        /*
+           public ActionResult Abouts(Guid id)
+        {
+            var page = pageService.Find(id);
+
+            return View(page);
+        }
+        */
         public ActionResult Portfolio()
         {
 
