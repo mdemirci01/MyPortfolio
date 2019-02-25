@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Builders\CategoryBuilder.cs" />
+    <Compile Include="Builders\NewsletterBuilder.cs" />
     <Compile Include="Builders\NotificationBuilder.cs" />
     <Compile Include="Builders\PageBuilder.cs" />
     <Compile Include="Builders\FeedbackBuilder.cs" />
@@ -71,6 +72,10 @@
     <Compile Include="Migrations\201902221141130_AddProjectModule.cs" />
     <Compile Include="Migrations\201902221141130_AddProjectModule.Designer.cs">
       <DependentUpon>201902221141130_AddProjectModule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902250726221_forNewsletter.cs" />
+    <Compile Include="Migrations\201902250726221_forNewsletter.Designer.cs">
+      <DependentUpon>201902250726221_forNewsletter.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201902250942336_AddTechnologyModule.cs" />
     <Compile Include="Migrations\201902250942336_AddTechnologyModule.Designer.cs">
@@ -97,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902221141130_AddProjectModule.resx">
       <DependentUpon>201902221141130_AddProjectModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902250726221_forNewsletter.resx">
+      <DependentUpon>201902250726221_forNewsletter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902250942336_AddTechnologyModule.resx">
       <DependentUpon>201902250942336_AddTechnologyModule.cs</DependentUpon>
