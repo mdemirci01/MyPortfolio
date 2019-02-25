@@ -10,32 +10,34 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Web.Controllers
 {
-   
+
     public class HomeController : Controller
     {
         private readonly IPageService pageService;
         private readonly IFeedbackService feedbackService;
+        private readonly INewsletterService newsletterService;
 
-        public HomeController( IPageService pageService, IFeedbackService feedbackService)
-        {           
+        public HomeController(IPageService pageService, IFeedbackService feedbackService, INewsletterService newsletterService)
+        {
             this.pageService = pageService;
             this.feedbackService = feedbackService;
+            this.newsletterService = newsletterService;
         }
 
-        
+
         public ActionResult Index()
         {
             ViewBag.user = ConfigurationManager.AppSettings["myKey"];
             return View();
         }
-       
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
             var page = pageService.FindByTitle("Hakkında");
             return View(page);
         }
-        
+
         public ActionResult Portfolio()
         {
 
@@ -56,11 +58,11 @@ namespace MyPortfolio.Web.Controllers
 
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult Contact(string firstName, string lastName, string email, string phone, string department, string message)
         {
-            
+
             firstName = firstName.Trim();
             lastName = lastName.Trim();
 
@@ -102,8 +104,8 @@ namespace MyPortfolio.Web.Controllers
 
             feedbackService.Insert(fed);
             //TODO Mail Gönderme İşlemi
-            
-       
+
+
             System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage();
             mailMessage.From = new System.Net.Mail.MailAddress("tanerakyil@gmail.com", "tano");
             mailMessage.Subject = "İletişim Formu: " + firstName + " " + lastName;
@@ -120,7 +122,7 @@ namespace MyPortfolio.Web.Controllers
 
 
             System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new System.Net.NetworkCredential("mail","sifre");
+            smtp.Credentials = new System.Net.NetworkCredential("mail", "sifre");
             smtp.EnableSsl = true;
             smtp.Send(mailMessage);
 
@@ -128,6 +130,22 @@ namespace MyPortfolio.Web.Controllers
             //TODO: Mail Gönderme işlemi yapılacak.
             ViewBag.Message = "Form başarıyla iletildi,en kısa zamanda dönüş yapacağız.";
             return View();
+        }
+
+        public ActionResult NewsletterSubscribtion()
+        {
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult NewsletterSubscribtion(Newsletter newsletter)
+        {
+            if (ModelState.IsValid)
+            {
+                newsletterService.Insert(newsletter);
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }
