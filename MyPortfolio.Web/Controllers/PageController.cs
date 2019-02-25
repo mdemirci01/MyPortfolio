@@ -20,7 +20,6 @@ namespace MyPortfolio.Web.Controllers
         {
             return View();
         }
-
         public ActionResult Details(Guid id)
         {
             var page = pageService.Find(id);

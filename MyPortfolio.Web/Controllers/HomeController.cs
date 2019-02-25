@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MyPortfolio.Service;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,17 +10,26 @@ namespace MyPortfolio.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            return View();
+        private readonly IPageService pageService;       
+
+        public HomeController( IPageService pageService)
+        {           
+            this.pageService = pageService;
         }
 
+        public ActionResult Index()
+        {
+            ViewBag.user = ConfigurationManager.AppSettings["myKey"];
+            return View();
+        }
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            var page = pageService.FindByTitle("Hakkında");
+            return View(page);
         }
+        
         public ActionResult Portfolio()
         {
 
