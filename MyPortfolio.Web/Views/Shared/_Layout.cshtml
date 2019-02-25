@@ -40,7 +40,7 @@
                     <ul class="nav-menu">
                         <li><a  href="@Url.Action("Index", "Home")">Anasayfa</a></li>                       
                         <li><a  href="@Url.Action("About", "Home")">Hakkında</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="@Url.Action("Index", "Project")">Projeler</a></li>
                         <li><a href="price.html">Blog</a></li>
                         <li><a href="price.html">İletişim</a></li>
                     </ul>
@@ -48,6 +48,7 @@
             </div>
         </div>
     </header><!-- #header -->
+
 
     @RenderBody()
     <hr />

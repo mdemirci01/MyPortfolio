@@ -18,17 +18,24 @@ namespace MyPortfolio.Model
         [Display(Name = "Açıklama")]
         public string Description { get; set; }
 
-        [Display(Name = "Kullanılan Teknoloji")]
-        public string Technology { get; set; }
 
         [Display(Name = "Fotoğraf")]
         public string Photo { get; set; }
 
+
         [Display(Name = "Proje Bitiş Tarihi")]
         public int Year { get; set; }
 
+
         [Display(Name = "Proje Github Linki")]
         public string GithubLink { get; set; }
+
+
+        [Display(Name = "Kullanılan Teknoloji")]
+        public Guid? TechnologyId { get; set; }
+
+        [Display(Name = "Kullanılan Teknoloji")]
+        public virtual Technology Technology { get; set; }
 
     }
 }
