@@ -38,16 +38,17 @@
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li><a href="index.html">Anasayfa</a></li>
-                        <li><a href="about.html">Hakkında</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="price.html">Blog</a></li>
-                        <li><a href="price.html">İletişim</a></li>                        
+                        <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>                       
+                        <li><a href="@Url.Action("About", "Home")">Hakkında</a></li>
+                        <li><a href="@Url.Action("Index", "Project")">Projeler</a></li>
+                        <li><a href="@Url.Action("Index","Post")">Blog</a></li>
+                        <li><a href="@Url.Action("contact","Home")">İletişim</a></li>
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
         </div>
     </header><!-- #header -->
+
 
     @RenderBody()
     <hr />

@@ -4,4 +4,208 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<!-- start banner Area -->
+<section class="about-banner">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Hakkımda
+                </h1>
+                <p class="text-white link-nav"><a  href="@Url.Action("Index", "Home")">Anasayfa </a>  <span class="lnr lnr-arrow-right"></span>  <a  href="@Url.Action("About", "Home")">Hakkımda</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start home-about Area -->
+<section class="home-about-area section-gap">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 home-about-left">
+                <img class="img-fluid" src="/img/about-img.png" alt="">
+            </div>
+            <div class="col-lg-5 col-md-6 home-about-right">
+                <h6>Hakkımda</h6>
+                <h1 class="text-uppercase">Kişisel Bilgiler</h1>
+                <p>
+                    Burada, onlara ikinci bir düşünce vermeden kullandığımız çeşitli ürün ve özelliklere odaklanıyorum. Coca Cola gibi. Dolor amet sit, donuk aldatıcı seçkinler, baştan ayağa kalkarak ya da doğumdan kurtulacaksın.
+                </p>
+                <a href="#" class="primary-btn text-uppercase">Tam Detayları Görüntüle</a>
+            </div>
+            <div class="col-lg-12 pt-60">
+                <p>
+                    Komşunuzda bir video oyunu sevgilisi bulmak daha büyük bir problem olmayacak. Sanal Oyun'un tanıtımından bu yana, popülaritesi ve teknolojik ilerlemesi ile ilgili olarak büyük zirvelere ulaşıyor. Video oyunu tarihi bir masal kadar ilginç.
+                </p>
+                <p>
+                    Bugünün video oyununun kalitesi, video oyunu ilk kez kavramsallaştırıldığında ve oynandığında hiç yoktu. Formülasyon yıllarında, çeşitli ekran formatlarına sahip çeşitli etkileşimli elektronik cihazlar kullanılarak video oyunları yaratıldı. İlk video oyunu 1947'de Thomas T. Goldsmith Jr tarafından tasarlandı.
+                </p>
+                <h4 class="pt-30">Uzmanlıklar</h4>
+            </div>
+        </div>
+        <div class="row skillbar-wraps">
+            <div class="col-lg-6 skill-left">
+                <div class="single-skill">
+                    <p>
+                        After Effects 85%
+                    </p>
+                    <div class="skill" data-width="85"></div>
+                </div>
+                <div class="single-skill">
+                    <p>
+                        Photoshop 90%
+                    </p>
+                    <div class="skill" data-width="90"></div>
+                </div>
+                <div class="single-skill">
+                    <p>
+                        Illustrator 70%
+                    </p>
+                    <div class="skill" data-width="70"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 skill-right">
+                <div class="single-skill">
+                    <p>
+                        Sublime 95%
+                    </p>
+                    <div class="skill" data-width="95"></div>
+                </div>
+                <div class="single-skill">
+                    <p>
+                        Sketch 85%
+                    </p>
+                    <div class="skill" data-width="85"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End home-about Area -->
+<!-- Start timeline Area -->
+<section class="timeline pb-120">
+    <div class="text-center">
+        <div class="menu-content pb-70">
+            <div class="title text-center">
+                <h1 class="mb-10">Niteliklerim</h1>
+                <p>Çevre dostu sisteme son derece aşık olanlar.</p>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <div class="content">
+                <h4>
+                    <time>Masters in Graphics & Fine Arts</time>
+                </h4>
+                <p><b>Session:</b> 2010-11</p>
+                <p><b>Result:</b> 3.78 (In the Scale of 4.00)</p>
+            </div>
+        </li>
+        <li>
+            <div class="content">
+                <img class="img-fluid mx-auto d-block mb-30" src="/img/about/c-logo.png" alt="">
+                <h4>
+                    <time>Creative Content Developer</time>
+                </h4>
+                <p>July 2015 to Present</p>
+            </div>
+        </li>
+        <li>
+            <div class="content">
+                <h4>
+                    <time>Bachelor in Graphics & UI/UX</time>
+                </h4>
+                <p><b>Session:</b> 2006-09</p>
+                <p><b>Result:</b> 3.40 (In the Scale of 4.00)</p>
+            </div>
+        </li>
+        <li>
+            <div class="content">
+                <img class="img-fluid mx-auto d-block mb-30" src="/img/about/c-logo.png" alt="">
+                <h4>
+                    <time>Senior UI/UX Designer</time>
+                </h4>
+                <p>July 2015 to Present</p>
+            </div>
+        </li>
+        <li>
+            <div class="content">
+                <h4>
+                    <time>Diploma in Fine Arts & Printing</time>
+                </h4>
+                <p><b>Session:</b> 2003-06</p>
+                <p><b>Result:</b> 4.94 (In the Scale of 5.00)</p>
+            </div>
+        </li>
+    </ul>
+</section>
+<!-- End timeline Area -->
+<!-- Start testimonial Area -->
+<section class="testimonial-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Müşterinin Hakkımdaki Görüşleri</h1>
+                    <p>Sigara içmek çok kolaydır ancak sigarayı bırakmak çok zor bir iştir. Herhangi bir sigara tiryakisi veya hatta bir kişiye sorun.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-testimonial">
+                <div class="single-testimonial item d-flex flex-row">
+                    <div class="thumb">
+                        <img class="img-fluid" src="/img/elements/user1.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Daha başarılı olmak ister misiniz? Öğrenmeyi ve büyümeyi sevmeyi öğrenin. Becerilerinizi geliştirmek için ne kadar çaba sarf ederseniz, kazancınız o kadar büyük olur.
+                        </p>
+                        <h4>Harriet Maxwell</h4>
+                        <p>CEO at Google</p>
+                    </div>
+                </div>
+                <div class="single-testimonial item d-flex flex-row">
+                    <div class="thumb">
+                        <img class="img-fluid" src="/img/elements/user2.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Amaç, başarının ebedi koşuludur. Her eski sigara tiryakisi sigara içmeyi bırakmanın ne kadar zor olduğunu söyleyebilir.
+                        </p>
+                        <h4>Carolyn Craig</h4>
+                        <p>CEO at Facebook</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End testimonial Area -->
+<!-- Start brands Area -->
+<section class="brands-area">
+    <div class="container">
+        <div class="brand-wrap">
+            <div class="row align-items-center active-brand-carusel justify-content-start no-gutters">
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l1.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l2.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l3.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l4.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l5.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End brands Area -->
