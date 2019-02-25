@@ -61,6 +61,7 @@ namespace MyPortfolio.Admin.Controllers
                 var model = postService.Find(post.Id);
                 model.Title = post.Title;
                 model.Description = post.Description;
+                model.IsActive = post.IsActive;
                 model.CategoryId = post.CategoryId;
                 postService.Update(model);
 
