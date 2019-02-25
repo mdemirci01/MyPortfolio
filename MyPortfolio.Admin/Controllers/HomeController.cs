@@ -38,7 +38,7 @@ namespace MyPortfolio.Admin.Controllers
             ViewBag.UserCount = userManager.Users.Count();
             var user = userManager.FindByName(User.Identity.Name);
             ViewBag.CurrentUser = user.FullName;
-            var post = postService.GetAll();
+            var post = postService.GetAll();     
             ViewBag.Posts = post;
             return View();
 
