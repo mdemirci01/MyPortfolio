@@ -11,10 +11,12 @@ namespace MyPortfolio.Admin.Controllers
     public class ProjectController : Controller
     {
         // GET: Project
+        private readonly ITechnologyService technologyService;
         private readonly IProjectService projectService;
-        public ProjectController(IProjectService projectService)
+        public ProjectController(IProjectService projectService, ITechnologyService technologyService)
         {
             this.projectService = projectService;
+            this.technologyService = technologyService;
         }
         public ActionResult Index()
         {
@@ -24,6 +26,7 @@ namespace MyPortfolio.Admin.Controllers
         public ActionResult Create()
         {
             var project = new Project();
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
             return View(project);
         }
 
@@ -36,21 +39,52 @@ namespace MyPortfolio.Admin.Controllers
                 projectService.Insert(project);
                 return RedirectToAction("Index");
             }
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
             return View(project);
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            var project = projectService.Find(id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
+            return View(project);
 
         }
-        public ActionResult Delete()
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit(Project project)
         {
+            if (ModelState.IsValid)
+            {
+                var model = projectService.Find(project.Id);
+                model.Name = project.Name;
+                model.ShortDescription = project.ShortDescription;
+                model.Description = project.Description;
+                model.GithubLink = project.GithubLink;
+                model.Year = project.Year;
+                model.Photo = project.Photo;
+                model.IsActive = project.IsActive;
+                model.TechnologyId = project.TechnologyId;
+                projectService.Update(model);
+                return RedirectToAction("Index");
+
+
+            }
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
             return View();
         }
-        public ActionResult Details()
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            projectService.Delete(id);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Details(Guid id)
+        {
+            return View(projectService.Find(id));
         }
     }
 }

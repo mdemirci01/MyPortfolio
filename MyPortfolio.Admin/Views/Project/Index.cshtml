@@ -5,9 +5,8 @@
 }
 
 <h2>Projeler</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")", class="btn btn-primary btn-xs">Yeni Proje</a>
 </p>
 <table class="table">
     <tr>
@@ -16,18 +15,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ShortDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Technology)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GithubLink)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
@@ -43,19 +30,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.ShortDescription)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Technology)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GithubLink)
-        </td>
-
         <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
