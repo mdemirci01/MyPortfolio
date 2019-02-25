@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
@@ -18,7 +19,9 @@ namespace MyPortfolio.Model
             // Add custom user claims here
             return userIdentity;
         }
+        [Display(Name = "Resim")]
         public string Photo { get; set; }
+        [Display(Name = "Ad-Soyad")]
         public string FullName { get; set; }
     }
 }
