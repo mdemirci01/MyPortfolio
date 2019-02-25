@@ -40,13 +40,7 @@ namespace MyPortfolio.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-
         }
-
-        
-
-
-
         public ActionResult Edit(Guid id)
         {
 
@@ -57,11 +51,7 @@ namespace MyPortfolio.Admin.Controllers
 
             }
             return View(category);
-
         }
-
-       
-
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Edit(Category category)
@@ -74,28 +64,17 @@ namespace MyPortfolio.Admin.Controllers
                 model.IsActive = category.IsActive;
                 categoryService.Update(model);
                 return RedirectToAction("Index");
-
-
             }
             return View();
-
-
         }
         public ActionResult Delete(Guid id)
         {
-
-
-    
             categoryService.Delete(id);
             return RedirectToAction("Index");
-
         }
         public ActionResult Details(Guid id)
         {
-
             return View(categoryService.Find(id));
-
-      
         }
     }
 }
