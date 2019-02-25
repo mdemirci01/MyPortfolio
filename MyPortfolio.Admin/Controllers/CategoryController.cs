@@ -31,6 +31,7 @@ namespace MyPortfolio.Admin.Controllers
             return View(category);
         }
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Create(Category category)
         {
             if (ModelState.IsValid)
@@ -62,6 +63,7 @@ namespace MyPortfolio.Admin.Controllers
        
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
@@ -69,6 +71,7 @@ namespace MyPortfolio.Admin.Controllers
                 var model = categoryService.Find(category.Id);
                 model.Name = category.Name;
                 model.Description = category.Description;
+                model.IsActive = category.IsActive;
                 categoryService.Update(model);
                 return RedirectToAction("Index");
 

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
+    [Authorize]
     public class ApplicationUserController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -51,13 +52,39 @@ namespace MyPortfolio.Admin.Controllers
         }
         public ActionResult Delete(string id)
         {
-            var userToDelete = UserManager.Users.FirstOrDefault(f => f.Id == id);
+            var userToDelete = UserManager.FindById(id);
+            var currentUserId = User.Identity.GetUserId();
             if (userToDelete == null)
             {
-                return HttpNotFound();
+                TempData["NullUser"] = "Uyarı: Kullanıcı bulunamadı!";
+                return RedirectToAction("Index");
+            }
+            if (userToDelete.Id == currentUserId)
+            {
+                TempData["CurrentUser"] = "Uyarı: Kendinizi silemezsiniz!";
+                return RedirectToAction("Index");
             }
             UserManager.Delete(userToDelete);
             return RedirectToAction("Index");
+        }
+        public ActionResult Edit(string id)
+        {
+            var user = UserManager.FindById(id);
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult Edit(ApplicationUser user)
+        {
+            if (ModelState.IsValid)
+            {
+                var model = UserManager.FindById(user.Id);
+                model.FullName = user.FullName;
+                model.Email = user.Email;
+                model.Photo = user.Photo;
+                UserManager.Update(model);
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

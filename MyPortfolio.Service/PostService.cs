@@ -17,6 +17,7 @@ namespace MyPortfolio.Service
         Post Find(Guid id);
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetAllByTitle(string title);
+        IEnumerable<Post> Search(string title);
     }
     public class PostService:IPostService
     {
@@ -59,6 +60,11 @@ namespace MyPortfolio.Service
         {
             postRepository.Insert(entity);
             unitOfWork.SaveChanges();
+        }
+
+        public IEnumerable<Post> Search(string title)
+        {
+            return postRepository.GetAll(e => e.Title.Contains(title));
         }
 
         public void Update(Post entity)

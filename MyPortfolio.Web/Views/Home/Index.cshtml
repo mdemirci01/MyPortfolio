@@ -2,30 +2,518 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- start banner Area -->
+<section class="banner-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 banner-left">
+                
+                <h1>@ViewBag.user</h1>
+                <p>
+                    Scrooge'a bazı farklı gelecekleri gösteren hayalet referansı ile neden bu alıştırmaya Dickens Pattern denildiğini anlamaya başlayacaksınız.
+                </p>
+                <a href="#" class="primary-btn text-uppercase">Şimdi Keşfet</a>
+            </div>
+            <div class="col-lg-6 col-md-6 banner-right d-flex align-self-end">
+                <img class="img-fluid" src="/img/hero-img.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+<!-- Start home-about Area -->
+<section class="home-about-area pt-120">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-lg-6 col-md-6 home-about-left">
+                <img class="img-fluid" src="/img/about-img.png" alt="">
+            </div>
+            <div class="col-lg-5 col-md-6 home-about-right">
+                <h6>Hakkınmda</h6>
+                <h1 class="text-uppercase">Kisisel Bilgiler</h1>
+                <p>
+                    Burada, onlara ikinci bir düşünce vermeden kullandığımız çeşitli ürün ve özelliklere odaklanıyorum. Coca Cola gibi. emek ve üzüntü, bazı önemli şeyler eiusmod yapmak, böylece Dolor, amet consectetur adipiscing elit, sed Kreuzberg ve canlılığını otur. egzersiz, okul ilçe nostrud gelecek yıllarda, üzerinde.
+                </p>
+                <a href="#" class="primary-btn text-uppercase">Tüm Detayları Görüntüle</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End home-about Area -->
+<!-- Start services Area -->
+<section class="services-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content  col-lg-7">
+                <div class="title text-center">
+                    <h1 class="mb-10">Sunduğum Servislerim</h1>
+                    <p>Yılın bu zamanında, Yeni Yıl kararları alındıktan, saklandığından veya ihmal edildikten birkaç ay sonra.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services">
+                    <span class="lnr lnr-pie-chart"></span>
+                    <a href="#"><h4>Web Tasarımı</h4></a>
+                    <p>
+                        “İşler zor olmadığımız için zor olduğumuz için değil; çünkü zor olmalarına cesaret edemeyiz. ”
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services">
+                    <span class="lnr lnr-laptop-phone"></span>
+                    <a href="#"><h4>Web Geliştirme</h4></a>
+                    <p>
+                        Girişimciyseniz, başarınızın başkalarının görüşlerine bağlı olmayacağını biliyorsunuz. Rüzgar gibi, görüşler.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services">
+                    <span class="lnr lnr-camera"></span>
+                    <a href="#"><h4>Fotoğrafçılık</h4></a>
+                    <p>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                        Daha başarılı olmak ister misiniz? Öğrenmeyi ve büyümeyi sevmeyi öğrenin. Becerilerinizi geliştirmek için daha fazla çaba harcarsınız.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services">
+                    <span class="lnr lnr-picture"></span>
+                    <a href="#"><h4>Kırpma yolu</h4></a>
+                    <p>
+                        Hipnoz sigarayı bırakma yöntemlerinin son 20 yılda tıp dünyasında oldukça karışıklığa yol açtığı yönünde devam etti. Çok fazla tartışma var.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services">
+                    <span class="lnr lnr-tablet"></span>
+                    <a href="#"><h4>Uguluma Arayüzü</h4></a>
+                    <p>
+                        Bazen aynı engellerle tekrar tekrar karşılaştığınız hissine kapılıyor musunuz? Çatışmalarımın çoğu.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="single-services">
+                    <span class="lnr lnr-rocket"></span>
+                    <a href="#"><h4>Grafik Tasarım</h4></a>
+                    <p>
+                        “Sadece ona inanın ve gelecek” ifadesini duydunuz. Peki, teknik olarak, bu doğru, ancak 'inanmak' sadece bunu düşünmüyor.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+</section>
+<!-- End services Area -->
+<!-- Start fact Area -->
+<section class="facts-area section-gap" id="facts-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 single-fact">
+                <h1 class="counter">2536</h1>
+                <p>Tamamlanmış Projeler</p>
+            </div>
+            <div class="col-lg-3 col-md-6 single-fact">
+                <h1 class="counter">6784</h1>
+                <p>Memnun Müşteriler</p>
+            </div>
+            <div class="col-lg-3 col-md-6 single-fact">
+                <h1 class="counter">2239</h1>
+                <p>Kahveler</p>
+            </div>
+            <div class="col-lg-3 col-md-6 single-fact">
+                <h1 class="counter">435</h1>
+                <p>Gerçek Uzmanlıklar</p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</section>
+<!-- end fact Area -->
+<!-- Start portfolio-area Area -->
+<section class="portfolio-area section-gap" id="portfolio">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Ve</h1>
+                    <p>Çevre dostu sisteme son derece aşık olanlar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <ul>
+                <li class="active" data-filter="*">Tümü</li>
+                <li data-filter=".vector">Vector</li>
+                <li data-filter=".raster">Raster</li>
+                <li data-filter=".ui">UI/UX</li>
+                <li data-filter=".printing">Baskı</li>
+            </ul>
+        </div>
+
+        <div class="filters-content">
+            <div class="row grid">
+                <div class="single-portfolio col-sm-4 all vector">
+                    <div class="relative">
+                        <div class="thumb">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="image img-fluid" src="/img/p1.jpg" alt="">
+                        </div>
+                        <a href="img/p1.jpg" class="img-pop-up">
+                            <div class="middle">
+                                <div class="text align-self-center d-flex"><img src="/img/preview.png" alt=""></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-inner">
+                        <h4>2D Vinil Tasarımı</h4>
+                        <div class="cat">vector</div>
+                    </div>
+                </div>
+                <div class="single-portfolio col-sm-4 all raster">
+                    <div class="relative">
+                        <div class="thumb">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="image img-fluid" src="/img/p2.jpg" alt="">
+                        </div>
+                        <a href="img/p2.jpg" class="img-pop-up">
+                            <div class="middle">
+                                <div class="text align-self-center d-flex"><img src="/img/preview.png" alt=""></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-inner">
+                        <h4>2D Vinil Tasarımı</h4>
+                        <div class="cat">vector</div>
+                    </div>
+                </div>
+                <div class="single-portfolio col-sm-4 all ui">
+                    <div class="relative">
+                        <div class="thumb">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="image img-fluid" src="/img/p3.jpg" alt="">
+                        </div>
+                        <a href="img/p3.jpg" class="img-pop-up">
+                            <div class="middle">
+                                <div class="text align-self-center d-flex"><img src="/img/preview.png" alt=""></div>
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class="p-inner">
+                        <h4>Yaratıcı Poster Dizaynı</h4>
+                        <div class="cat">Agency</div>
+                    </div>
+                </div>
+                <div class="single-portfolio col-sm-4 all printing">
+                    <div class="relative">
+                        <div class="thumb">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="image img-fluid" src="/img/p4.jpg" alt="">
+                        </div>
+                        <a href="img/p4.jpg" class="img-pop-up">
+                            <div class="middle">
+                                <div class="text align-self-center d-flex"><img src="/img/preview.png" alt=""></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-inner">
+                        <h4>Kabartılmış Logo Tasarımı</h4>
+                        <div class="cat">Portal</div>
+                    </div>
+                </div>
+                <div class="single-portfolio col-sm-4 all vector">
+                    <div class="relative">
+                        <div class="thumb">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="image img-fluid" src="/img/p5.jpg" alt="">
+                        </div>
+                        <a href="img/p5.jpg" class="img-pop-up">
+                            <div class="middle">
+                                <div class="text align-self-center d-flex"><img src="/img/preview.png" alt=""></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-inner">
+                        <h4>3D Kask Tasarımı</h4>
+                        <div class="cat">vector</div>
+                    </div>
+                </div>
+                <div class="single-portfolio col-sm-4 all raster">
+                    <div class="relative">
+                        <div class="thumb">
+                            <div class="overlay overlay-bg"></div>
+                            <img class="image img-fluid" src="/img/p6.jpg" alt="">
+                        </div>
+                        <a href="img/p6.jpg" class="img-pop-up">
+                            <div class="middle">
+                                <div class="text align-self-center d-flex"><img src="/img/preview.png" alt=""></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-inner">
+                        <h4>2D Vinyl Design</h4>
+                        <div class="cat">raster</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-</div>
+</section>
+<!-- End portfolio-area Area -->
+<!-- Start testimonial Area -->
+<section class="testimonial-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Müşterilerin Hakkımızdaki Geri Dönüşleri</h1>
+                    <p>Sigara içmek çok kolaydır ancak sigarayı bırakmak çok zor bir iştir. Herhangi bir sigara tiryakisi veya hatta bir kişiye sorun.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="active-testimonial">
+                <div class="single-testimonial item d-flex flex-row">
+                    <div class="thumb">
+                        <img class="img-fluid" src="/img/elements/user1.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Daha başarılı olmak ister misiniz? Öğrenmeyi ve büyümeyi sevmeyi öğrenin. Becerilerinizi geliştirmek için ne kadar çaba sarf ederseniz, kazancınız o kadar büyük olur.
+                        </p>
+                        <h4>Harriet Maxwell</h4>
+                        <p>CEO at Google</p>
+                    </div>
+                </div>
+                <div class="single-testimonial item d-flex flex-row">
+                    <div class="thumb">
+                        <img class="img-fluid" src="/img/elements/user2.png" alt="">
+                    </div>
+                    <div class="desc">
+                        <p>
+                            Amaç, başarının ebedi koşuludur. Her eski sigara tiryakisi sigara içmeyi bırakmanın ne kadar zor olduğunu söyleyebilir. Ancak.
+                        </p>
+                        <h4>Carolyn Craig</h4>
+                        <p>CEO at Facebook</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End testimonial Area -->
+<!-- Start price Area -->
+<section class="price-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-70 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Planını Seç</h1>
+                    <p>Birisi yapmaması gereken bir şey yaptığında, yapmalıydı.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 single-price">
+                <div class="top-part">
+                    <h1 class="package-no">01</h1>
+                    <h4>Ekonomi</h4>
+                    <p class="mt-10">Bireyler İçin</p>
+                </div>
+                <div class="package-list">
+                    <ul>
+                        <li>Güvenli Online Transfer</li>
+                        <li>Sınırsız Arayüz Tasarımı</li>
+                        <li>Güvenilir Müşteri Servisi</li>
+                    </ul>
+                </div>
+                <div class="bottom-part">
+                    <h1>£199.00</h1>
+                    <a class="price-btn text-uppercase" href="#">Satın Al</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 single-price">
+                <div class="top-part">
+                    <h1 class="package-no">02</h1>
+                    <h4>Firma</h4>
+                    <p class="mt-10">Bireyler İçin</p>
+                </div>
+                <div class="package-list">
+                    <ul>
+                        <li>Güvenli Online Transfer</li>
+                        <li>Sınırsız Arayüz Tasarımı</li>
+                        <li>Güvenilir Müşteri Servisi</li>
+                    </ul>
+                </div>
+                <div class="bottom-part">
+                    <h1>£299.00</h1>
+                    <a class="price-btn text-uppercase" href="#">Satın Al</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 single-price">
+                <div class="top-part">
+                    <h1 class="package-no">03</h1>
+                    <h4>Premium</h4>
+                    <p class="mt-10">Bireyler İçin</p>
+                </div>
+                <div class="package-list">
+                    <ul>
+                        <li>Güvenli Online Transfer</li>
+                        <li>Sınırsız Arayüz Tasarımı</li>
+                        <li>Güvenilir Müşteri Servisi</li>
+                    </ul>
+                </div>
+                <div class="bottom-part">
+                    <h1>£399.00</h1>
+                    <a class="price-btn text-uppercase" href="#">Satın Al</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 single-price">
+                <div class="top-part">
+                    <h1 class="package-no">04</h1>
+                    <h4>Özel</h4>
+                    <p class="mt-10">Bireyler İçin</p>
+                </div>
+                <div class="package-list">
+                    <ul>
+                        <li>Güvenli Online Transfer</li>
+                        <li>Sınırsız Arayüz Tasarımı</li>
+                        <li>Güvenilir Müşteri Servisi</li>
+                    </ul>
+                </div>
+                <div class="bottom-part">
+                    <h1>£499.00</h1>
+                    <a class="price-btn text-uppercase" href="#">Satın Al</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End price Area -->
+<!-- Start recent-blog Area -->
+<section class="recent-blog-area section-gap">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 pb-30 header-text">
+                <h1>Bloğumuzun En son Gönderileri</h1>
+                <p>
+
+                    Yetenekli, etkili bir işveren olabilirsiniz ancak personelinize ve tersine güvenmiyorsanız, işi geliştirme ve büyütme şansı
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="single-recent-blog col-lg-4 col-md-4">
+                <div class="thumb">
+                    <img class="f-img img-fluid mx-auto" src="/img/b1.jpg" alt="">
+                </div>
+                <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+                    <div>
+                        <img class="img-fluid" src="/img/user.png" alt="">
+                        <a href="#"><span>Mark Wiens</span></a>
+                    </div>
+                    <div class="meta">
+                        13th Dec
+                        <span class="lnr lnr-heart"></span> 15
+                        <span class="lnr lnr-bubble"></span> 04
+                    </div>
+                </div>
+                <a href="#">
+                    <h4>
+                        Kendinden Şüphe ile Kırmak
+                        Ve Korku
+                    </h4>
+                </a>
+                <p>
+                    Rüya tabirlerinin birçok formu vardır; eğlence uğruna yapılabilir hobi ya da ciddi bir kariyer olarak ele alınabilir.
+                </p>
+            </div>
+            <div class="single-recent-blog col-lg-4 col-md-4">
+                <div class="thumb">
+                    <img class="f-img img-fluid mx-auto" src="/img/b2.jpg" alt="">
+                </div>
+                <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+                    <div>
+                        <img class="img-fluid" src="/img/user.png" alt="">
+                        <a href="#"><span>Mark Wiens</span></a>
+                    </div>
+                    <div class="meta">
+                        13th Dec
+                        <span class="lnr lnr-heart"></span> 15
+                        <span class="lnr lnr-bubble"></span> 04
+                    </div>
+                </div>
+                <a href="#">
+                    <h4>
+                        Taşınabilir Moda
+                        genç kadınlar
+                    </h4>
+                </a>
+                <p>
+                    Yetenekli, etkili bir işveren olabilirsiniz ancak personelinize ve tam tersine güvenmiyorsanız, gelişme şansı.
+                </p>
+            </div>
+            <div class="single-recent-blog col-lg-4 col-md-4">
+                <div class="thumb">
+                    <img class="f-img img-fluid mx-auto" src="/img/b3.jpg" alt="">
+                </div>
+                <div class="bottom d-flex justify-content-between align-items-center flex-wrap">
+                    <div>
+                        <img class="img-fluid" src="/img/user.png" alt="">
+                        <a href="#"><span>Mark Wiens</span></a>
+                    </div>
+                    <div class="meta">
+                        13th Dec
+                        <span class="lnr lnr-heart"></span> 15
+                        <span class="lnr lnr-bubble"></span> 04
+                    </div>
+                </div>
+                <a href="#">
+                    <h4>
+                        Hayaller Farklı Servisler Sunuyor
+                        Bir Premonition
+                    </h4>
+                </a>
+                <p>
+                    Birçoğumuz bir şey başarmak için can atıyoruz. Böyle insanlar hiçbir şey için hevesli değillerdir. Katılmak için çalışmak istemiyorlar.
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- end recent-blog Area -->
+<!-- Start brands Area -->
+<section class="brands-area">
+    <div class="container">
+        <div class="brand-wrap">
+            <div class="row align-items-center active-brand-carusel justify-content-start no-gutters">
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l1.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l2.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l3.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l4.png" alt=""></a>
+                </div>
+                <div class="col single-brand">
+                    <a href="#"><img class="mx-auto" src="/img/l5.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End brands Area -->
