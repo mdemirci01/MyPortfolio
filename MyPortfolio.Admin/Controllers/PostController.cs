@@ -1,4 +1,4 @@
-﻿using MyPortfolio.Model;
+﻿    using MyPortfolio.Model;
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
@@ -58,12 +58,7 @@ namespace MyPortfolio.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var model = postService.Find(post.Id);
-                model.Title = post.Title;
-                model.Description = post.Description;
-                model.CategoryId = post.CategoryId;
-                postService.Update(model);
-
+                postService.Update(post);
                 return RedirectToAction("index");
 
             }

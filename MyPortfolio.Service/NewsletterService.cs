@@ -16,7 +16,7 @@ namespace MyPortfolio.Service
         void Delete(Guid id);
         Newsletter Find(Guid id);
         IEnumerable<Newsletter> GetAll();
-        IEnumerable<Newsletter> GetAll(Guid id);
+        IEnumerable<Newsletter> GetAllByEmail(string partOfEmail);
     }
     public class NewsletterService : INewsletterService
     {
@@ -52,9 +52,9 @@ namespace MyPortfolio.Service
             return newsletterRepository.GetAll();
         }
 
-        public IEnumerable<Newsletter> GetAll(Guid id)
+        public IEnumerable<Newsletter> GetAllByEmail(string partOfEmail)
         {
-            return newsletterRepository.GetAll(w=>w.Id==id);
+            return newsletterRepository.GetAll(w=>w.Email.Contains(partOfEmail));
         }
 
         public void Insert(Newsletter entity)
@@ -68,6 +68,7 @@ namespace MyPortfolio.Service
             var newsletter = newsletterRepository.Find(entity.Id);
             newsletter.FullName = entity.FullName;
             newsletter.Email = entity.Email;
+            newsletter.IsActive = entity.IsActive;
             newsletterRepository.Update(newsletter);
             unitOfWork.SaveChanges();
         }

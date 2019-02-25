@@ -251,6 +251,7 @@
     <Compile Include="Controllers\ApplicationUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NewsLetterController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
@@ -813,10 +814,13 @@
     <Content Include="Views\ApplicationUser\Index.cshtml" />
     <Content Include="Views\ApplicationUser\Edit.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\NewsLetter\Index.cshtml" />
+    <Content Include="Views\NewsLetter\Create.cshtml" />
+    <Content Include="Views\NewsLetter\Edit.cshtml" />
+    <Content Include="Views\NewsLetter\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
