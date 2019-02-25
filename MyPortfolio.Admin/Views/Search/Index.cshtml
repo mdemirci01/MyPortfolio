@@ -7,7 +7,6 @@
 
 <table class="table">
     <tr>
-
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -15,13 +14,7 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th></th>
     </tr>
@@ -33,19 +26,26 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            
+
             @Html.Raw(item.Description)
         </td>
-        <th>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </th>
         <th>
             @Html.DisplayFor(modelItem => item.Type)
         </th>
         <td>
-            @Html.DisplayFor(modelItem => item.IsActive)
+            @if (item.Type == "Kategori")
+            {
+                <a href="@Url.Action("Details","Category", new { Id = item.Id })" class="btn btn-info btn-sm">Detaylar</a>
+            }
+            @if (item.Type == "Yazı")
+            {
+                <a href="@Url.Action("Details","Post", new { Id = item.Id })" class="btn btn-info btn-sm">Detaylar</a>
+            }
+            @if (item.Type == "Sayfa")
+            {
+                <a href="@Url.Action("Details","Page", new { Id = item.Id })" class="btn btn-info btn-sm">Detaylar</a>
+            }
         </td>
     </tr>
     }
-
 </table>

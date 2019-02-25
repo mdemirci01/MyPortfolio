@@ -26,13 +26,13 @@ namespace MyPortfolio.Admin.Controllers
             {
                 var searchResults = new List<SearchViewModel>();
 
-                var categories = categoryService.Search(name).Select(s => new SearchViewModel { Title = s.Name, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Kategori", IsActive = s.IsActive }).ToList();
+                var categories = categoryService.Search(name).Select(s => new SearchViewModel {Id =s.Id, Title = s.Name, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Kategori", IsActive = s.IsActive }).ToList();
                 searchResults.AddRange(categories);
 
-                var posts = postService.Search(name).Select(s => new SearchViewModel { Title = s.Title, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Yazı", IsActive = s.IsActive }).ToList();
+                var posts = postService.Search(name).Select(s => new SearchViewModel {Id = s.Id, Title = s.Title, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Yazı", IsActive = s.IsActive }).ToList();
                 searchResults.AddRange(posts);
 
-                var pages = pageService.Search(name).Select(s => new SearchViewModel { Title = s.Title, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Sayfa", IsActive = s.IsActive }).ToList();
+                var pages = pageService.Search(name).Select(s => new SearchViewModel { Id = s.Id, Title = s.Title, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Sayfa", IsActive = s.IsActive }).ToList();
                 searchResults.AddRange(pages);
 
                 return View(searchResults);
