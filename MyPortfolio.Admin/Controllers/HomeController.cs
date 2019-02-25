@@ -16,11 +16,13 @@ namespace MyPortfolio.Admin.Controllers
         private readonly ICategoryService categoryService;
         private readonly IPostService postService;
         private readonly IPageService pageService;
+        private readonly INotificationService notificationService;
         private readonly ApplicationUserManager userManager;
 
-        public HomeController(ApplicationUserManager userManager, ICategoryService categoryService,IPostService postService,IPageService pageService)
+        public HomeController(ApplicationUserManager userManager, ICategoryService categoryService,IPostService postService,IPageService pageService, INotificationService notificationService)
         {
             this.categoryService = categoryService;
+            this.notificationService = notificationService;
             this.postService = postService;
             this.pageService = pageService;
             this.userManager = userManager;
@@ -32,6 +34,7 @@ namespace MyPortfolio.Admin.Controllers
             
             var category = categoryService.GetAll();
             ViewBag.Categories = category;
+            ViewBag.Notification = notificationService.GetAll();
             ViewBag.PostCount = postService.GetAll().Count();
             ViewBag.CategoryCount = categoryService.GetAll().Count();
             ViewBag.PageCount = pageService.GetAll().Count();
