@@ -31,8 +31,15 @@ namespace MyPortfolio.Service
 
         public void Delete(Page page)
         {
-            pageRepository.Delete(page);
-            unitOfWork.SaveChanges();
+            unitOfWork.BeginTransaction();
+            try { 
+                pageRepository.Delete(page);
+                unitOfWork.SaveChanges();
+                unitOfWork.Commit();
+            } catch(Exception ex)
+            {
+                unitOfWork.Rollback();
+            }
         }
 
         public void Delete(Guid id)
