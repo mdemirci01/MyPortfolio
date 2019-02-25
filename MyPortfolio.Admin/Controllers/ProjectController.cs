@@ -11,10 +11,12 @@ namespace MyPortfolio.Admin.Controllers
     public class ProjectController : Controller
     {
         // GET: Project
+        private readonly ITechnologyService technologyService;
         private readonly IProjectService projectService;
-        public ProjectController(IProjectService projectService)
+        public ProjectController(IProjectService projectService, ITechnologyService technologyService)
         {
             this.projectService = projectService;
+            this.technologyService = technologyService;
         }
         public ActionResult Index()
         {
@@ -24,6 +26,7 @@ namespace MyPortfolio.Admin.Controllers
         public ActionResult Create()
         {
             var project = new Project();
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
             return View(project);
         }
 
@@ -36,6 +39,7 @@ namespace MyPortfolio.Admin.Controllers
                 projectService.Insert(project);
                 return RedirectToAction("Index");
             }
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
             return View(project);
         }
 
@@ -46,6 +50,7 @@ namespace MyPortfolio.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
             return View(project);
 
         }
@@ -60,15 +65,16 @@ namespace MyPortfolio.Admin.Controllers
                 model.ShortDescription = project.ShortDescription;
                 model.Description = project.Description;
                 model.GithubLink = project.GithubLink;
-                model.Technology = project.Technology;
                 model.Year = project.Year;
                 model.Photo = project.Photo;
                 model.IsActive = project.IsActive;
+                model.TechnologyId = project.TechnologyId;
                 projectService.Update(model);
                 return RedirectToAction("Index");
 
 
             }
+            ViewBag.Technologies = new SelectList(technologyService.GetAll(), "Id", "Name", project.TechnologyId);
             return View();
         }
         public ActionResult Delete(Guid id)

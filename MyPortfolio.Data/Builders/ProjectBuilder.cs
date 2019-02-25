@@ -15,8 +15,8 @@ namespace MyPortfolio.Data.Builders
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100);
             entity.Property(e => e.ShortDescription).IsRequired().HasMaxLength(500);
-            entity.Property(e => e.Technology).IsRequired().HasMaxLength(500);
             entity.Property(e => e.Photo).HasMaxLength(200);
+            entity.HasOptional(p => p.Technology).WithMany(m => m.Projects).HasForeignKey(f => f.TechnologyId);
 
         }
     }
