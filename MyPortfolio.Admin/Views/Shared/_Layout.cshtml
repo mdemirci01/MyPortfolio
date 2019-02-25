@@ -32,12 +32,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto navbar-right-top">
-                        @using (Html.BeginForm("Index", "Search", FormMethod.Get,new { @style = "display: inherit" }))
+                    <ul class="navbar-nav ml-auto">
+                        @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { @style = "display: inherit" }))
                         {
                             <li class="nav-item">
                                 <div id="custom-search" class="top-search-bar">
-                                    @Html.TextBox("name", null, new { @class = "form-control" })
+                                    @Html.TextBox("name", null, new { @class = "form-control", placeholder="Arama.." })
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -46,7 +46,7 @@
                                 </div>
                             </li>
                         }
-                        <li class="nav-item dropdown notification">
+                        <li class="nav-item dropdown notification" style="margin-top: 15px;">
                             <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                                 <li>
@@ -74,7 +74,7 @@
                         </li>
 
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle" style="    margin-top: 5px;"></a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
 
@@ -178,6 +178,16 @@
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="@Url.Action("Index","Category")"><i class="fas fa-fw fa-table"></i>Kategoriler</a>
+
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index","Project")"><i class="fa fa-fw fa-folder"></i>Projeler</a>
+
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("Index","Technology")"><i class="fa fa-fw fa-chart-pie"></i>Teknolojiler</a>
 
                             </li>
                             <li class="nav-item">
