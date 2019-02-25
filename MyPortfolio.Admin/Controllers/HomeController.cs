@@ -25,6 +25,7 @@ namespace MyPortfolio.Admin.Controllers
             this.notificationService = notificationService;
             this.postService = postService;
             this.pageService = pageService;
+            this.notificationService = notificationService;
             this.userManager = userManager;
            
         }
@@ -34,6 +35,7 @@ namespace MyPortfolio.Admin.Controllers
             
             var category = categoryService.GetAll();
             ViewBag.Categories = category;
+
             ViewBag.Notification = notificationService.GetAll();
             ViewBag.PostCount = postService.GetAll().Count();
             ViewBag.CategoryCount = categoryService.GetAll().Count();
