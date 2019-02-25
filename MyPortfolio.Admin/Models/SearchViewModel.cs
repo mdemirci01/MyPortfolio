@@ -8,6 +8,7 @@ namespace MyPortfolio.Admin.Models
 {
     public class SearchViewModel
     {
+        public Guid Id { get; set; }
         [Display(Name ="Başlık")]
         public string Title { get; set; }
         [Display(Name = "Açıklama")]

@@ -2,6 +2,7 @@
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -12,23 +13,29 @@ namespace MyPortfolio.Web.Controllers
    
     public class HomeController : Controller
     {
+        private readonly IPageService pageService;
         private readonly IFeedbackService feedbackService;
-        
-        public HomeController(IFeedbackService feedbackService)
-        {
+
+        public HomeController( IPageService pageService, IFeedbackService feedbackService)
+        {           
+            this.pageService = pageService;
             this.feedbackService = feedbackService;
         }
+
+        
         public ActionResult Index()
         {
+            ViewBag.user = ConfigurationManager.AppSettings["myKey"];
             return View();
         }
-
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
+            var page = pageService.FindByTitle("Hakkında");
+            return View(page);
         }
+        
         public ActionResult Portfolio()
         {
 
