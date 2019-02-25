@@ -53,7 +53,8 @@ namespace MyPortfolio.Web
             builder.RegisterType(typeof(PageService)).As(typeof(IPageService)).InstancePerDependency();
             builder.RegisterType(typeof(FeedbackService)).As(typeof(IFeedbackService)).InstancePerDependency();
             builder.RegisterType(typeof(NotificationService)).As(typeof(INotificationService)).InstancePerDependency();
-
+            builder.RegisterType(typeof(ProjectService)).As(typeof(IProjectService)).InstancePerDependency();
+            builder.RegisterType(typeof(TechnologyService)).As(typeof(ITechnologyService)).InstancePerDependency();
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

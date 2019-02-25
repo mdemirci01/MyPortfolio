@@ -1,4 +1,4 @@
-﻿@model MyPortfolio.Model.Project
+﻿@model IEnumerable<MyPortfolio.Model.Project>
 
 @{
     ViewBag.Title = "Projeler";
@@ -31,13 +31,16 @@
         </div>""
 
         <div class="filters">
+            
             <ul>
-                <li class="active" data-filter="*">All</li>
-                <li data-filter=".vector">Vector</li>
-                <li data-filter=".raster">Raster</li>
-                <li data-filter=".ui">UI/UX</li>
-                <li data-filter=".printing">Printing</li>
+                <li class="active" data-filter="*">Tümü</li>
+                @foreach (var item in ViewBag.Technologies)
+                {
+                    <li data-filter=".vector">@item.Name</li>
+                }
             </ul>
+            
+
         </div>
 
         <div class="filters-content">
