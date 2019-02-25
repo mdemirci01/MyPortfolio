@@ -39,18 +39,46 @@ namespace MyPortfolio.Admin.Controllers
             return View(project);
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(Guid id)
         {
-            return View();
+            var project = projectService.Find(id);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            return View(project);
 
         }
-        public ActionResult Delete()
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit(Project project)
         {
+            if (ModelState.IsValid)
+            {
+                var model = projectService.Find(project.Id);
+                model.Name = project.Name;
+                model.ShortDescription = project.ShortDescription;
+                model.Description = project.Description;
+                model.GithubLink = project.GithubLink;
+                model.Technology = project.Technology;
+                model.Year = project.Year;
+                model.Photo = project.Photo;
+                model.IsActive = project.IsActive;
+                projectService.Update(model);
+                return RedirectToAction("Index");
+
+
+            }
             return View();
         }
-        public ActionResult Details()
+        public ActionResult Delete(Guid id)
         {
-            return View();
+            projectService.Delete(id);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Details(Guid id)
+        {
+            return View(projectService.Find(id));
         }
     }
 }
