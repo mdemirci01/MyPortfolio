@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using MyPortfolio.Model;
+using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,12 @@ using System.Web.Mvc;
 namespace MyPortfolio.Admin.Controllers
 {
     [Authorize]
-    public class ApplicationUserController : Controller
+    public class ApplicationUserController : ControllerBase
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ApplicationUserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ApplicationUserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, INotificationService notificationService) : base(notificationService)
         {
             UserManager = userManager;
             SignInManager = signInManager;

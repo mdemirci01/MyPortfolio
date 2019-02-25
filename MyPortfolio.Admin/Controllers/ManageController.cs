@@ -7,20 +7,21 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyPortfolio.Admin.Models;
+using MyPortfolio.Service;
 
 namespace MyPortfolio.Admin.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : ControllerBase
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
+        public ManageController() : base(null)
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, INotificationService notificationService) : base(notificationService)
         {
             UserManager = userManager;
             SignInManager = signInManager;

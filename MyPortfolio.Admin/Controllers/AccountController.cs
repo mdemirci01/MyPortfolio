@@ -10,20 +10,21 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyPortfolio.Admin.Models;
 using MyPortfolio.Model;
+using MyPortfolio.Service;
 
 namespace MyPortfolio.Admin.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController():base(null)
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, INotificationService notificationService) : base(notificationService)
         {
             UserManager = userManager;
             SignInManager = signInManager;

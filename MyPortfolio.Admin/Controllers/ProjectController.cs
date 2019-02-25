@@ -8,12 +8,12 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class ProjectController : Controller
+    public class ProjectController : ControllerBase
     {
         // GET: Project
         private readonly ITechnologyService technologyService;
         private readonly IProjectService projectService;
-        public ProjectController(IProjectService projectService, ITechnologyService technologyService)
+        public ProjectController(IProjectService projectService, ITechnologyService technologyService, INotificationService notificationService) : base(notificationService)
         {
             this.projectService = projectService;
             this.technologyService = technologyService;

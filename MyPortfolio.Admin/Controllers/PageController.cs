@@ -8,12 +8,12 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class PageController : Controller
+    public class PageController : ControllerBase
     {
 
         private readonly IPageService pageService;
 
-        public PageController(IPageService pageService)
+        public PageController(IPageService pageService, INotificationService notificationService) : base(notificationService)
         {
             this.pageService = pageService;
         }

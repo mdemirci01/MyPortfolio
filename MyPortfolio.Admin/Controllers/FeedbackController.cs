@@ -7,11 +7,11 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class FeedbackController : Controller
+    public class FeedbackController : ControllerBase
     {
         private readonly IFeedbackService feedbackService;
 
-        public FeedbackController(IFeedbackService feedbackService)
+        public FeedbackController(IFeedbackService feedbackService, INotificationService notificationService) : base(notificationService)
         {
             this.feedbackService = feedbackService;
         }

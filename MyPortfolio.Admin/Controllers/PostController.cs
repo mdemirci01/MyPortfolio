@@ -8,11 +8,11 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class PostController : Controller
+    public class PostController : ControllerBase
     {
         private readonly IPostService postService;
         private readonly ICategoryService categoryService;
-        public PostController(IPostService postService, ICategoryService categoryService)
+        public PostController(IPostService postService, ICategoryService categoryService, INotificationService notificationService) : base(notificationService)
         {
             this.postService = postService;
             this.categoryService = categoryService;

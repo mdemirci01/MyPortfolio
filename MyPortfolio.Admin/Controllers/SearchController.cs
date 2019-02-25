@@ -8,12 +8,12 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class SearchController : Controller
+    public class SearchController : ControllerBase
     {
         private readonly ICategoryService categoryService;
         private readonly IPostService postService;
         private readonly IPageService pageService;
-        public SearchController(ICategoryService categoryService, IPostService postService, IPageService pageService)
+        public SearchController(ICategoryService categoryService, IPostService postService, IPageService pageService, INotificationService notificationService) : base(notificationService)
         {
             this.categoryService = categoryService;
             this.postService = postService;

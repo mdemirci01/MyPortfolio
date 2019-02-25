@@ -7,10 +7,11 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class NotificationController : Controller
+    public class NotificationController : ControllerBase
     {
         private readonly INotificationService notificationService;
-        public NotificationController(INotificationService notificationService) {
+        public NotificationController(INotificationService notificationService) : base(notificationService)
+        {
             this.notificationService = notificationService;
 
         }

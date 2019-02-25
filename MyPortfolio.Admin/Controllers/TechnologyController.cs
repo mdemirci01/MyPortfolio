@@ -8,11 +8,11 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class TechnologyController : Controller
+    public class TechnologyController : ControllerBase
     {
         private readonly ITechnologyService technologyService;
         // GET: Technology
-        public TechnologyController(ITechnologyService technologyService)
+        public TechnologyController(ITechnologyService technologyService, INotificationService notificationService) : base(notificationService)
         {
             this.technologyService = technologyService;
         }

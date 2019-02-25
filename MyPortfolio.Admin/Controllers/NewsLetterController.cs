@@ -9,10 +9,10 @@ using System.Web.Mvc;
 
 namespace MyPortfolio.Admin.Controllers
 {
-    public class NewsLetterController : Controller
+    public class NewsLetterController : ControllerBase
     {
         private readonly INewsletterService newsletterService;
-        public NewsLetterController(INewsletterService newsletterService)
+        public NewsLetterController(INewsletterService newsletterService, INotificationService notificationService) : base(notificationService)
         {
             this.newsletterService = newsletterService;
         }
