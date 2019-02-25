@@ -56,12 +56,12 @@ namespace MyPortfolio.Admin.Controllers
             var currentUserId = User.Identity.GetUserId();
             if (userToDelete == null)
             {
-                TempData["NullUser"] = "Kullanıcı bulunamadı!";
+                TempData["NullUser"] = "Uyarı: Kullanıcı bulunamadı!";
                 return RedirectToAction("Index");
             }
             if (userToDelete.Id == currentUserId)
             {
-                TempData["CurrentUser"] = "Kendinizi silemezsiniz!";
+                TempData["CurrentUser"] = "Uyarı: Kendinizi silemezsiniz!";
                 return RedirectToAction("Index");
             }
             UserManager.Delete(userToDelete);
@@ -82,8 +82,9 @@ namespace MyPortfolio.Admin.Controllers
                 model.Email = user.Email;
                 model.Photo = user.Photo;
                 UserManager.Update(model);
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            return View();
         }
     }
 }
