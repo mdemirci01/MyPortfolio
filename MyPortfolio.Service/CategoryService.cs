@@ -17,6 +17,7 @@ namespace MyPortfolio.Service
         Category Find(Guid id);
         IEnumerable<Category> GetAll();
         IEnumerable<Category> GetAllByName(string name);
+        IEnumerable<Category> Search(string name);
     }
     public class CategoryService:ICategoryService
     {
@@ -59,6 +60,11 @@ namespace MyPortfolio.Service
         {
             categoryRepository.Insert(entity);
             unitOfWork.SaveChanges();
+        }
+
+        public IEnumerable<Category> Search(string name)
+        {
+            return categoryRepository.GetAll(e => e.Name.Contains(name));
         }
 
         public void Update(Category entity)

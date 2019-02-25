@@ -1,4 +1,5 @@
-﻿using MyPortfolio.Service;
+﻿using MyPortfolio.Admin.Models;
+using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,27 @@ namespace MyPortfolio.Admin.Controllers
     {
         private readonly ICategoryService categoryService;
         private readonly IPostService postService;
-        
-        // GET: Search
-        public ActionResult Index()
+        private readonly IPageService pageService;
+        public SearchController(ICategoryService categoryService, IPostService postService, IPageService pageService)
         {
-            return View();
+            this.categoryService = categoryService;
+            this.postService = postService;
+            this.pageService = pageService;
+        }
+        // GET: Search
+        public ActionResult Index(string name)
+        {
+            var searchResults = new List<SearchViewModel>();
+            var categories = categoryService.Search(name).Select(s => new SearchViewModel { Title = s.Name, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Kategori", IsActive = s.IsActive }).ToList();
+            
+            searchResults.AddRange(categories);
+            var posts = postService.Search(name).Select(s => new SearchViewModel { Title = s.Title, Description = s.Description, CreatedAt = s.CreatedAt, Type = "Yazı", IsActive = s.IsActive }).ToList();
+            searchResults.AddRange(posts);
+
+            var pages = pageService.Search(name).Select(s => new SearchViewModel { Title = s.Title, Description = s.Description, CreatedAt = s.CreatedAt,Type = "Sayfa", IsActive = s.IsActive }).ToList();
+            searchResults.AddRange(pages);
+
+            return View(searchResults);
         }
     }
 }

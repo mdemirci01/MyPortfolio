@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MyPortfolio.Admin.Models.SearchViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Arama Sonuçları</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.Type)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+    </tr>
+    }
+
+</table>
