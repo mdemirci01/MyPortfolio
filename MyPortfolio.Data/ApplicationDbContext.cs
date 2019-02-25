@@ -27,6 +27,7 @@ namespace MyPortfolio.Data
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Notification> Notifications { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Technology> Technologies { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -36,6 +37,7 @@ namespace MyPortfolio.Data
             new PageBuilder(modelBuilder.Entity<Page>());
             new NotificationBuilder(modelBuilder.Entity<Notification>());
             new ProjectBuilder(modelBuilder.Entity<Project>());
+            new TechnologyBuilder(modelBuilder.Entity<Technology>());
         }
     }
 }
