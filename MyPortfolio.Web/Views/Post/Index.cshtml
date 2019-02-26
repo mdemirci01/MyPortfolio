@@ -109,15 +109,13 @@
                                 </span>
                             </a>
                         </li>
-                        @{ 
-                            int pageCount = Convert.ToInt32((Math.Ceiling((double)Model.Count() / (double)5)));
-                        }
-                        @for (int i = 1; i <= pageCount; i++)
+                       
+                        @for (int i = 1; i <= ViewBag.PageCount; i++)
                         {
                             <li class="page-item"><a href="@Url.Action("Index","Post", new { page = i })" class="page-link">@i</a></li>
                         }
                         <li class="page-item">
-                            <a href="@Url.Action("Index","Post", new { page = ViewBag.Page<pageCount?ViewBag.Page + 1:pageCount })" class="page-link" aria-label="Next">
+                            <a href="@Url.Action("Index","Post", new { page = ViewBag.Page<ViewBag.PageCount?ViewBag.Page + 1:ViewBag.PageCount })" class="page-link" aria-label="Next">
                                 <span aria-hidden="true">
                                     <span class="lnr lnr-chevron-right"></span>
                                 </span>

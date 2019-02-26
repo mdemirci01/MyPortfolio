@@ -24,6 +24,8 @@ namespace MyPortfolio.Web.Controllers
             ViewBag.Categories = categoryService.GetAll();
             int skip = (page - 1) * 5;
             int take = 5;
+            int pageCount = Convert.ToInt32((Math.Ceiling((double)postService.GetAll().OrderByDescending(o => o.CreatedAt).Count() / (double)5)));
+            ViewBag.PageCount = pageCount;
             // sayfa noya göre 5 kayıt getir
             var posts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Skip(skip).Take(take).ToList();
 
