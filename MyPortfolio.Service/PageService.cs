@@ -61,7 +61,8 @@ namespace MyPortfolio.Service
 
         public Page FindByTitle(string title)
         {
-            return pageRepository.Find(e => e.Title.Contains(title));
+            title = title.ToLower();
+            return pageRepository.Find(e => e.Title.ToLower() == title);
         }
 
         public IEnumerable<Page> GetAll()

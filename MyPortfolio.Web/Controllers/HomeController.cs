@@ -33,7 +33,6 @@ namespace MyPortfolio.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
             var page = pageService.FindByTitle("Hakkında");
             return View(page);
         }

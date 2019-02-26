@@ -19,9 +19,9 @@ namespace MyPortfolio.Web.Controllers
         // GET: Project
         public ActionResult Index()
         {
-            var project = projectService.GetAll();
+            var projects = projectService.GetAll();
             ViewBag.Technologies = technologyService.GetAll();
-            return View(project);
+            return View(projects);
         }
     }
 }
