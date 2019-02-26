@@ -18,13 +18,19 @@ namespace MyPortfolio.Web.Controllers
 
         }
         // GET: Post
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             
             ViewBag.Categories = categoryService.GetAll();
-            var posts = postService.GetAll();
-            ViewBag.Post = posts;
-            return View();
+            int skip = (page - 1) * 5;
+            int take = 5;
+            // sayfa noya göre 5 kayıt getir
+            var posts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Skip(skip).Take(take).ToList();
+
+            // son yazılar
+            ViewBag.RecentPosts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Take(4).ToList();
+            ViewBag.Page = page;
+            return View(posts);
         }
         public ActionResult Blog() {
 
