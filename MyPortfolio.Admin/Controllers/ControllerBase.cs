@@ -15,7 +15,12 @@ namespace MyPortfolio.Admin.Controllers
         {
             this.notificationService = notificationService;
         }
-
+        // bu metot tüm actionlardan önce çalışır
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+        }
+        // bu metot tüm actionlardan sonra çalışır
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             if (notificationService != null) { 

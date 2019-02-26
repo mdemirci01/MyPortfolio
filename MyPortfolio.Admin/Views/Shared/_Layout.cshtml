@@ -124,81 +124,40 @@
                                 Menu
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
-                                <div id="submenu-1" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                            <div id="submenu-1-2" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="index.html">E Commerce Dashboard</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product.html">Product List</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-single.html">Product Single</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="ecommerce-product-checkout.html">Product Checkout</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-finance.html">Finance</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="dashboard-sales.html">Sales</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="@Url.Action("Index","Home")" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
-                                            <div id="submenu-1-1" class="collapse submenu" style="">
-                                                <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="dashboard-influencer.html">Influencer</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-finder.html">Influencer Finder</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="influencer-profile.html">Influencer Profile</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Home"?"active":"")" href="@Url.Action("Index","Home")"><i class="fa fa-fw fa-user-circle"></i>Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Page")"><i class="fa fa-fw fa-file"></i>Sayfalar</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Page"?"active":"")" href="@Url.Action("Index","Page")"><i class="fa fa-fw fa-file"></i>Sayfalar</a>
 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Post")"><i class="fab fa-fw fa-wpforms"></i>Yazılar</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Post"?"active":"")" href="@Url.Action("Index","Post")"><i class="fab fa-fw fa-wpforms"></i>Yazılar</a>
 
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="@Url.Action("Index","Category")"><i class="fas fa-fw fa-table"></i>Kategoriler</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Category"?"active":"")" href="@Url.Action("Index","Category")"><i class="fas fa-fw fa-table"></i>Kategoriler</a>
 
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Project")"><i class="fa fa-fw fa-folder"></i>Projeler</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Project"?"active":"")" href="@Url.Action("Index","Project")"><i class="fa fa-fw fa-folder"></i>Projeler</a>
 
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Technology")"><i class="fa fa-fw fa-chart-pie"></i>Teknolojiler</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Technology"?"active":"")" href="@Url.Action("Index","Technology")"><i class="fa fa-fw fa-chart-pie"></i>Teknolojiler</a>
 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","ApplicationUser")"><i class="fa fa-fw fa-user-circle"></i>Kullanıcılar</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "ApplicationUser"?"active":"")" href="@Url.Action("Index","ApplicationUser")"><i class="fa fa-fw fa-user-circle"></i>Kullanıcılar</a>
 
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Index","Feedback")"><i class="fa fa-fw fa-rocket"></i>Bildirimler</a>
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Feedback"?"active":"")" href="@Url.Action("Index","Feedback")"><i class="fa fa-fw fa-rocket"></i>Bildirimler</a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewContext.RouteData.Values["controller"].ToString() == "Newsletter"?"active":"")" href="@Url.Action("Index", "Newsletter")"><i class="fa fa-fw fa-envelope"></i>E-bülten Aboneleri</a>
 
                             </li>
                         </ul>
