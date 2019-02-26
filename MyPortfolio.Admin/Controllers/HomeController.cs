@@ -40,7 +40,7 @@ namespace MyPortfolio.Admin.Controllers
             ViewBag.PageCount = pageService.GetAll().Count();
             ViewBag.UserCount = userManager.Users.Count();
             var user = userManager.FindByName(User.Identity.Name);
-            ViewBag.CurrentUser = user.FullName;
+            ViewBag.CurrentUser = user?.FullName;
             var post = postService.GetAll();     
             ViewBag.Posts = post;
             return View();
