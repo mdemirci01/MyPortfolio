@@ -138,43 +138,11 @@
                         </form>
                     </div>
 
-                    <div class="single-sidebar-widget popular-post-widget">
-                        <h4 class="popular-title">Son Yazılar</h4>
-                        <div class="popular-post-list">
-                            @foreach (var item in ViewBag.RecentPosts)
-                            {
-                                <div class="single-post-list d-flex flex-row align-items-center">
-                                    <div class="thumb">
-                                        <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
-                                    </div>
-                                    <div class="details">
-                                        <a href="@Url.Action("Details","Post", new { id = item.Id })"><h6>@item.Title</h6></a>
-                                        <p>@item.CreatedAt.ToShortDateString()</p>
-                                    </div>
-                                </div>
-                            }
-                        </div>
-                    </div>
+                    @Html.Action("RecentPosts")
                     <div class="single-sidebar-widget ads-widget">
                         <a href="#"><img class="img-fluid" src="img/blog/ads-banner.jpg" alt=""></a>
                     </div>
-                    <div class="single-sidebar-widget post-category-widget">
-
-                        <h4 class="category-title">Kategoriler</h4>
-                        <ul class="cat-list">
-                            @foreach (var item in ViewBag.Categories)
-                            {
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>@item.Name</p>
-
-
-                                    </a>
-                                </li>
-
-                            }
-                        </ul>
-                    </div>
+                    @Html.Partial("_CategoriesPartial")
                     <div class="single-sidebar-widget newsletter-widget">
                         <h4 class="newsletter-title">Newsletter</h4>
                         <p>

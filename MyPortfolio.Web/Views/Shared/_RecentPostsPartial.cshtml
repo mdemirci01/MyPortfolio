@@ -1,0 +1,17 @@
+﻿<div class="single-sidebar-widget popular-post-widget">
+    <h4 class="popular-title">Son Yazılar</h4>
+    <div class="popular-post-list">
+        @foreach (var item in ViewBag.RecentPosts)
+        {
+            <div class="single-post-list d-flex flex-row align-items-center">
+                <div class="thumb">
+                    <img class="img-fluid" src="img/blog/pp1.jpg" alt="">
+                </div>
+                <div class="details">
+                    <a href="@Url.Action("Details", "Post", new { id = item.Id })"><h6>@item.Title</h6></a>
+                    <p>@item.CreatedAt.ToShortDateString()</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

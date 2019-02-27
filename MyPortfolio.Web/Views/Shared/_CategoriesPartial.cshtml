@@ -1,0 +1,16 @@
+﻿<div class="single-sidebar-widget post-category-widget">
+    <h4 class="category-title">Kategoriler</h4>
+    <ul class="cat-list">
+        @foreach (var item in ViewBag.Categories)
+        {
+            <li>
+                <a href="#" class="d-flex justify-content-between">
+                    <p>@item.Name</p>
+
+
+                </a>
+            </li>
+
+        }
+    </ul>
+</div>

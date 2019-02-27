@@ -31,17 +31,23 @@ namespace MyPortfolio.Web.Controllers
             //var posts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Skip(skip).Take(take).ToList();
 
             // son yazılar
-            ViewBag.RecentPosts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Take(4).ToList();
+            
             //ViewBag.Page = page;
             var posts = postService.GetAll();
             var pageNumber = page ?? 1;
             var onePageOfPosts = posts.ToPagedList(pageNumber, 5);
             return View(onePageOfPosts);
         }
-        public ActionResult Blog() {
+        public ActionResult Details(Guid id) {
+            ViewBag.Categories = categoryService.GetAll();
+            var post = postService.Find(id);
+            return View(post);
+        }
 
-            return View();
-
+        public ActionResult RecentPosts()
+        {
+            ViewBag.RecentPosts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Take(4).ToList();
+            return PartialView("_RecentPostsPartial");
         }
     }
 }

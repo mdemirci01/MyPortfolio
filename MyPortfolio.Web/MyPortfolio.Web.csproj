@@ -504,6 +504,9 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Project\Index.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\Details.cshtml" />
+    <Content Include="Views\Shared\_CategoriesPartial.cshtml" />
+    <Content Include="Views\Shared\_RecentPostsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
