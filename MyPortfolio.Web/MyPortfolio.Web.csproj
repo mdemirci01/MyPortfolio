@@ -509,6 +509,7 @@
     <Content Include="Views\Shared\_CategoriesPartial.cshtml" />
     <Content Include="Views\Shared\_RecentPostsPartial.cshtml" />
     <Content Include="Views\Shared\_NewsletterPartial.cshtml" />
+    <Content Include="Views\Shared\RecentPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
