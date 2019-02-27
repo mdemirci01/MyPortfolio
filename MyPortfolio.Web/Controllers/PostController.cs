@@ -1,4 +1,5 @@
 ﻿using MyPortfolio.Service;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,21 +19,24 @@ namespace MyPortfolio.Web.Controllers
 
         }
         // GET: Post
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(/*int page = 1*/ int? page)
         {
             
             ViewBag.Categories = categoryService.GetAll();
-            int skip = (page - 1) * 5;
-            int take = 5;
-            int pageCount = Convert.ToInt32((Math.Ceiling((double)postService.GetAll().OrderByDescending(o => o.CreatedAt).Count() / (double)5)));
-            ViewBag.PageCount = pageCount;
-            // sayfa noya göre 5 kayıt getir
-            var posts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Skip(skip).Take(take).ToList();
+            //int skip = (page - 1) * 5;
+            //int take = 5;
+            //int pageCount = Convert.ToInt32((Math.Ceiling((double)postService.GetAll().OrderByDescending(o => o.CreatedAt).Count() / (double)5)));
+            //ViewBag.PageCount = pageCount;
+            //// sayfa noya göre 5 kayıt getir
+            //var posts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Skip(skip).Take(take).ToList();
 
             // son yazılar
             ViewBag.RecentPosts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Take(4).ToList();
-            ViewBag.Page = page;
-            return View(posts);
+            //ViewBag.Page = page;
+            var posts = postService.GetAll();
+            var pageNumber = page ?? 1;
+            var onePageOfPosts = posts.ToPagedList(pageNumber, 5);
+            return View(onePageOfPosts);
         }
         public ActionResult Blog() {
 

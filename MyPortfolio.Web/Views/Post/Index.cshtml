@@ -1,5 +1,8 @@
-﻿@model IEnumerable<MyPortfolio.Model.Post>
-	<!-- start banner Area -->
+﻿@model IPagedList< MyPortfolio.Model.Post >
+@using PagedList.Mvc;
+@using PagedList;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css"/>
+<!-- start banner Area -->
 <section class="banner-area relative blog-home-banner" id="home">
     <div class="overlay overlay-bg"></div>
     <div class="container">
@@ -82,46 +85,48 @@
         <div class="row">
             <div class="col-lg-8 posts-list">
                 <div class="single-post row">
-                   @foreach (var item in Model) {
-                    <div class="col-lg-9 col-md-9 ">
-                        <div class="feature-img">
-                            <img class="img-fluid" src="~/img/" alt="">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-9 col-md-9 ">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="~/img/" alt="">
+                            </div>
+                            <a class="posts-title" href="@Url.Action("Details", "Post", new { id = item.Id })"><h3>@item.Title</h3></a>
+                            <p class="excert">
+                                @Html.Raw((item.Description.ToString().Length > 200) ? item.Description.ToString().Substring(0, 200) : item.Description.ToString())...
+                            </p>
+                            <a href="@Url.Action("Details", "Post", new { id = item.Id })" class="primary-btn">Daha Fazla Oku</a>
                         </div>
-                        <a class="posts-title" href="@Url.Action("Details", "Post", new { id = item.Id })"><h3>@item.Title</h3></a>
-                        <p class="excert">
-                          @Html.Raw((item.Description.ToString().Length > 200)? item.Description.ToString().Substring(0, 200): item.Description.ToString())...
-                        </p>
-                        <a href="@Url.Action("Details", "Post", new { id = item.Id })" class="primary-btn">Daha Fazla Oku</a>
-                    </div>
-                   }
+                    }
                 </div>
-                
-                
-                
-               
+
+
+
+
                 <nav class="blog-pagination justify-content-center d-flex">
                     <ul class="pagination">
 
-                        <li class="page-item">
-                            <a href="@Url.Action("Index","Post", new { page = (ViewBag.Page>1?ViewBag.Page - 1:1) })" class="page-link" aria-label="Previous">
-                                <span aria-hidden="true">
-                                    <span class="lnr lnr-chevron-left"></span>
-                                </span>
-                            </a>
-                        </li>
-                       
-                        @for (int i = Math.Min((ViewBag.PageCount - 4<1?1:ViewBag.PageCount - 4), Math.Max(1,ViewBag.Page - 2)); i <= Math.Min(ViewBag.PageCount, Math.Max(5, ViewBag.Page + 2)); i++)
-                        {
-                            <li class="page-item"><a href="@Url.Action("Index","Post", new { page = i })" class="page-link">@i</a></li>
-                        }
-                        <li class="page-item">
-                            <a href="@Url.Action("Index","Post", new { page = ViewBag.Page<ViewBag.PageCount?ViewBag.Page + 1:ViewBag.PageCount })" class="page-link" aria-label="Next">
-                                <span aria-hidden="true">
-                                    <span class="lnr lnr-chevron-right"></span>
-                                </span>
-                            </a>
-                        </li>
+                        @*<li class="page-item">
+                <a href="@Url.Action("Index","Post", new { page = (ViewBag.Page>1?ViewBag.Page - 1:1) })" class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">
+                        <span class="lnr lnr-chevron-left"></span>
+                    </span>
+                </a>
+            </li>
+
+            @for (int i = Math.Min((ViewBag.PageCount - 4 < 1 ? 1 : ViewBag.PageCount - 4), Math.Max(1, ViewBag.Page - 2)); i <= Math.Min(ViewBag.PageCount, Math.Max(5, ViewBag.Page + 2)); i++)
+            {
+                <li class="page-item"><a href="@Url.Action("Index","Post", new { page = i })" class="page-link">@i</a></li>
+            }
+            <li class="page-item">
+                <a href="@Url.Action("Index","Post", new { page = ViewBag.Page<ViewBag.PageCount?ViewBag.Page + 1:ViewBag.PageCount })" class="page-link" aria-label="Next">
+                    <span aria-hidden="true">
+                        <span class="lnr lnr-chevron-right"></span>
+                    </span>
+                </a>
+            </li>*@
                     </ul>
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
                 </nav>
             </div>
             <div class="col-lg-4 sidebar-widgets">
@@ -132,7 +137,7 @@
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
-                    
+
                     <div class="single-sidebar-widget popular-post-widget">
                         <h4 class="popular-title">Son Yazılar</h4>
                         <div class="popular-post-list">
@@ -163,10 +168,10 @@
                                     <a href="#" class="d-flex justify-content-between">
                                         <p>@item.Name</p>
 
-                                       
+
                                     </a>
                                 </li>
-                               
+
                             }
                         </ul>
                     </div>
