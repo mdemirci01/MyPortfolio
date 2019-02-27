@@ -203,6 +203,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -507,9 +508,11 @@
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Views\Shared\_CategoriesPartial.cshtml" />
     <Content Include="Views\Shared\_RecentPostsPartial.cshtml" />
+    <Content Include="Views\Shared\_NewsletterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Common\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
