@@ -47,7 +47,7 @@ namespace MyPortfolio.Web.Controllers
         public ActionResult RecentPosts()
         {
             ViewBag.RecentPosts = postService.GetAll().OrderByDescending(o => o.CreatedAt).Take(4).ToList();
-            return PartialView("_RecentPostsPartial");
+            return PartialView();
         }
     }
 }
