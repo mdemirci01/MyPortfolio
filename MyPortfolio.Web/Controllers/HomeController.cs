@@ -144,7 +144,7 @@ namespace MyPortfolio.Web.Controllers
                 }
                 TempData["Message"] = "Bu E-Posta adresi sisteme kayıtlıdır.";
             }
-            return RedirectToAction(actionName, controllerName);
+            return Redirect("/" + controllerName + "/" + actionName + "/#mc_embed_signup");
         }
     }
 }

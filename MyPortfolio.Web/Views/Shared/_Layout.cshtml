@@ -75,7 +75,6 @@
                 <div class="col-lg-5 col-md-6 col-sm-6">
                     <div class="single-footer-widget">
                         <h4>Bülten</h4>
-                        <p>En yeni trendlerimizle güncel kalın</p>
                         <div class="" id="mc_embed_signup">
                             <form action="@Url.Action("NewsletterSubscribtion", "Home")" method="post">
                                 @{
@@ -85,6 +84,7 @@
                                 <input type="hidden" name="controllerName" value="@controllerName" />
                                 <input type="hidden" name="actionName" value="@actionName" />
                                 <div class="input-group">
+                                    <p class="@((TempData["Message"]) != null ? "text-danger" :" text-white")">@(TempData["Message"] ?? "En yeni trendlerimizle güncel kalın")</p>
                                     <input type="email" class="form-control" name="EMAIL" placeholder="E-postanızı Giriniz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email Address '" required="">
                                     <div class="input-group-btn">
                                         <button type="submit" class="btn btn-default"><span class="lnr lnr-arrow-right"></span></button>
@@ -133,14 +133,5 @@
     <script src="/js/mail-script.js"></script>
     <script src="/js/main.js"></script>
     @RenderSection("scripts", required: false)
-    
-    @if (TempData["Message"] != null)
-    {
-        <script type="text/javascript">
-            window.onload = function () {
-                alert("@TempData["Message"]");
-            };
-        </script>
-    }
 </body>
 </html>
