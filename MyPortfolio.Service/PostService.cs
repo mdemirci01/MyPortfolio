@@ -72,6 +72,7 @@ namespace MyPortfolio.Service
             var post = postRepository.Find(entity.Id);
             post.Title = entity.Title;
             post.Description = entity.Description;
+            post.IsActive = entity.IsActive;
             post.CategoryId = entity.CategoryId;
             postRepository.Update(post);
             unitOfWork.SaveChanges();
