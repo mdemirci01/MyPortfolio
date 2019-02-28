@@ -16,6 +16,8 @@
     <!-- Site Title -->
     <title>@ViewBag.Title</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+
+
     <!--
     CSS
     ============================================= -->
@@ -38,7 +40,7 @@
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>                       
+                        <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>
                         <li><a href="@Url.Action("About", "Home")">Hakkında</a></li>
                         <li><a href="@Url.Action("Index", "Project")">Projeler</a></li>
                         <li><a href="@Url.Action("Index", "Post")">Blog</a></li>
@@ -79,7 +81,7 @@
                                 @{
                                     string actionName = (ViewContext.RouteData.Values["action"] ?? "").ToString();
                                     string controllerName = (ViewContext.RouteData.Values["controller"] ?? "").ToString();
-                                    }
+                                }
                                 <input type="hidden" name="controllerName" value="@controllerName" />
                                 <input type="hidden" name="actionName" value="@actionName" />
                                 <div class="input-group">
@@ -131,5 +133,14 @@
     <script src="/js/mail-script.js"></script>
     <script src="/js/main.js"></script>
     @RenderSection("scripts", required: false)
+    
+    @if (TempData["Message"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["Message"]");
+            };
+        </script>
+    }
 </body>
 </html>

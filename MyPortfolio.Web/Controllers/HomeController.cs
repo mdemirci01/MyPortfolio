@@ -136,8 +136,13 @@ namespace MyPortfolio.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                newsletterService.Insert(newsletter);
-                return RedirectToAction(actionName, controllerName);
+                var getEmails = newsletterService.GetAll();
+                if (getEmails.FirstOrDefault(f => f.Email == newsletter.Email) == null)
+                {
+                    newsletterService.Insert(newsletter);
+                    return RedirectToAction(actionName, controllerName);
+                }
+                TempData["Message"] = "Bu E-Posta adresi sisteme kayıtlıdır.";
             }
             return RedirectToAction(actionName, controllerName);
         }
