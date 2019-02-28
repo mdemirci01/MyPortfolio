@@ -131,20 +131,15 @@ namespace MyPortfolio.Web.Controllers
             return View();
         }
 
-        public ActionResult NewsletterSubscribtion()
-        {
-            return RedirectToAction("Index");
-        }
-
         [HttpPost]
-        public ActionResult NewsletterSubscribtion(Newsletter newsletter)
+        public ActionResult NewsletterSubscribtion(Newsletter newsletter, string controllerName, string actionName)
         {
             if (ModelState.IsValid)
             {
                 newsletterService.Insert(newsletter);
-                return RedirectToAction("Index");
+                return RedirectToAction(actionName, controllerName);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction(actionName, controllerName);
         }
     }
 }

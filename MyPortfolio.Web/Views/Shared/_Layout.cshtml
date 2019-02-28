@@ -34,15 +34,15 @@
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="@Url.Action("Index","Home")"><img src="/img/logoson.jpg" alt="" title="" /></a>
+                    <a href="@Url.Action("Index", "Home")"><img src="/img/logoson.jpg" alt="" title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
                         <li><a href="@Url.Action("Index", "Home")">Anasayfa</a></li>                       
                         <li><a href="@Url.Action("About", "Home")">Hakkında</a></li>
                         <li><a href="@Url.Action("Index", "Project")">Projeler</a></li>
-                        <li><a href="@Url.Action("Index","Post")">Blog</a></li>
-                        <li><a href="@Url.Action("contact","Home")">İletişim</a></li>
+                        <li><a href="@Url.Action("Index", "Post")">Blog</a></li>
+                        <li><a href="@Url.Action("contact", "Home")">İletişim</a></li>
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
@@ -75,11 +75,17 @@
                         <h4>Bülten</h4>
                         <p>En yeni trendlerimizle güncel kalın</p>
                         <div class="" id="mc_embed_signup">
-                            <form>
+                            <form action="@Url.Action("NewsletterSubscribtion", "Home")" method="post">
+                                @{
+                                    string actionName = (ViewContext.RouteData.Values["action"] ?? "").ToString();
+                                    string controllerName = (ViewContext.RouteData.Values["controller"] ?? "").ToString();
+                                    }
+                                <input type="hidden" name="controllerName" value="@controllerName" />
+                                <input type="hidden" name="actionName" value="@actionName" />
                                 <div class="input-group">
                                     <input type="email" class="form-control" name="EMAIL" placeholder="E-postanızı Giriniz" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email Address '" required="">
                                     <div class="input-group-btn">
-                                        <a href="@Url.Action("NewsletterSubscribtion")" class="btn btn-default"><span class="lnr lnr-arrow-right"></span></a>
+                                        <button type="submit" class="btn btn-default"><span class="lnr lnr-arrow-right"></span></button>
                                     </div>
                                     <div class="info"></div>
                                 </div>
@@ -113,7 +119,7 @@
     <script src="/js/easing.min.js"></script>
     <script src="/js/hoverIntent.js"></script>
     <script src="/js/superfish.min.js"></script>
-    <script src="/js/jquery.ajaxchimp.min.js"></script>
+    @*<script src="/js/jquery.ajaxchimp.min.js"></script>*@
     <script src="/js/jquery.magnific-popup.min.js"></script>
     <script src="/js/jquery.tabs.min.js"></script>
     <script src="/js/jquery.nice-select.min.js"></script>
