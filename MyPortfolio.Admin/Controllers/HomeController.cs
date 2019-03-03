@@ -33,8 +33,6 @@ namespace MyPortfolio.Admin.Controllers
             
             var category = categoryService.GetAll();
             ViewBag.Categories = category;
-
-            
             ViewBag.PostCount = postService.GetAll().Count();
             ViewBag.CategoryCount = categoryService.GetAll().Count();
             ViewBag.PageCount = pageService.GetAll().Count();
