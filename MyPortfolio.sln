@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.Web", "MyPortfo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.Admin", "MyPortfolio.Admin\MyPortfolio.Admin.csproj", "{EF0F41A3-208F-41E7-A7E2-C5A66E95BFCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPortfolio.Assets", "MyPortfolio.Assets\MyPortfolio.Assets.csproj", "{6F396503-D221-484B-8D9D-239086F9D6CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EF0F41A3-208F-41E7-A7E2-C5A66E95BFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF0F41A3-208F-41E7-A7E2-C5A66E95BFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF0F41A3-208F-41E7-A7E2-C5A66E95BFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F396503-D221-484B-8D9D-239086F9D6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F396503-D221-484B-8D9D-239086F9D6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F396503-D221-484B-8D9D-239086F9D6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F396503-D221-484B-8D9D-239086F9D6CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

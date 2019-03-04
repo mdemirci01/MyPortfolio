@@ -2,6 +2,7 @@
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -41,7 +42,7 @@ namespace MyPortfolio.Admin.Controllers
                     string fileName = Path.GetFileName(upload.FileName);
                     string extension = Path.GetExtension(fileName).ToLower();
                     if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif") { 
-                        string path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                        string path = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], fileName);
                         upload.SaveAs(path);
                         post.Photo = fileName;
                         postService.Insert(post);
@@ -83,7 +84,7 @@ namespace MyPortfolio.Admin.Controllers
                     string extension = Path.GetExtension(fileName).ToLower();
                     if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
                     {
-                        string path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                        string path = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], fileName);
                         upload.SaveAs(path);
                         post.Photo = fileName;
                         postService.Update(post);

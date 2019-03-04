@@ -2,6 +2,7 @@
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,6 +29,7 @@ namespace MyPortfolio.Admin.Controllers
             } else {
                 ViewBag.Notification = new List<Notification>();
             }
+            ViewBag.AssetsUrl = ConfigurationManager.AppSettings["assetsUrl"];
             base.OnActionExecuted(filterContext);
         }
     }

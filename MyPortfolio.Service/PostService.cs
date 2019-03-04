@@ -74,6 +74,7 @@ namespace MyPortfolio.Service
             post.Description = entity.Description;
             post.IsActive = entity.IsActive;
             post.CategoryId = entity.CategoryId;
+            post.Photo = entity.Photo;
             postRepository.Update(post);
             unitOfWork.SaveChanges();
         }
