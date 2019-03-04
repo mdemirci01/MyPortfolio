@@ -2,6 +2,7 @@
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,12 +32,26 @@ namespace MyPortfolio.Admin.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(Post post)
+        public ActionResult Create(Post post, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                postService.Insert(post);
-                return RedirectToAction("index");
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(upload.FileName);
+                    string extension = Path.GetExtension(fileName).ToLower();
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif") { 
+                        string path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                        upload.SaveAs(path);
+                        post.Photo = fileName;
+                        postService.Insert(post);
+                        return RedirectToAction("index");
+                    } else
+                    {
+                        ModelState.AddModelError("Photo", "Dosya uzantısı .jpg, .jpeg, .png ya da .gif olmalıdır.");
+                    }
+                }
+                
             }
             ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
             return View(post);
