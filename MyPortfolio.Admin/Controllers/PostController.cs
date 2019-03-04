@@ -50,6 +50,10 @@ namespace MyPortfolio.Admin.Controllers
                     {
                         ModelState.AddModelError("Photo", "Dosya uzantısı .jpg, .jpeg, .png ya da .gif olmalıdır.");
                     }
+                } else
+                {
+                    postService.Insert(post);
+                    return RedirectToAction("index");
                 }
                 
             }
@@ -69,12 +73,34 @@ namespace MyPortfolio.Admin.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Post post)
+        public ActionResult Edit(Post post, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                postService.Update(post);
-                return RedirectToAction("index");
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(upload.FileName);
+                    string extension = Path.GetExtension(fileName).ToLower();
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
+                    {
+                        string path = Path.Combine(Server.MapPath("~/Uploads"), fileName);
+                        upload.SaveAs(path);
+                        post.Photo = fileName;
+                        postService.Update(post);
+                        return RedirectToAction("index");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Photo", "Dosya uzantısı .jpg, .jpeg, .png ya da .gif olmalıdır.");
+
+                    }
+                } else
+                {
+                    // resim seçilip yüklenmese bile diğer bilgileri güncelle
+                    postService.Update(post);
+                    return RedirectToAction("index");
+                }
+                
 
             }
             ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);

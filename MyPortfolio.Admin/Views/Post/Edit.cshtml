@@ -7,9 +7,9 @@
 <h2>Düzenle</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit","Post",FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 <script src="https://cdn.ckeditor.com/4.11.2/standard/ckeditor.js"></script>
 <div class="form-horizontal">
     <h4>Post</h4>
@@ -34,6 +34,18 @@
         <script>
             CKEDITOR.replace('Description');
         </script>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.HiddenFor(model => model.Photo)
+            @if (!string.IsNullOrEmpty(Model.Photo))
+            {
+                <img src="~/Uploads/@Model.Photo" style="width:300px;" /><br />
+                <input type="file" name="upload" />
+            }
+            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+        </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
