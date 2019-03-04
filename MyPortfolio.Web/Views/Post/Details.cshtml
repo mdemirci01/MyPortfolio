@@ -48,9 +48,10 @@
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
+                        <img src="@(ViewBag.AssetsUrl)@Model.Photo" style="width:100%;" /><br />
                         <h3 class="mt-20 mb-20">@Model.Title</h3>
                         <p class="excert">
-                           @Html.Raw(Model.Description)
+                            @Html.Raw(Model.Description)
                         </p>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -36,11 +37,13 @@ namespace MyPortfolio.Web.Controllers
             var posts = postService.GetAll();
             var pageNumber = page ?? 1;
             var onePageOfPosts = posts.ToPagedList(pageNumber, 5);
+            ViewBag.AssetsUrl = ConfigurationManager.AppSettings["assetsUrl"];
             return View(onePageOfPosts);
         }
         public ActionResult Details(Guid id) {
             ViewBag.Categories = categoryService.GetAll();
             var post = postService.Find(id);
+            ViewBag.AssetsUrl = ConfigurationManager.AppSettings["assetsUrl"];
             return View(post);
         }
 

@@ -87,16 +87,17 @@
                 <div class="single-post row">
                     @foreach (var item in Model)
                     {
-                        <div class="col-lg-9 col-md-9 ">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="~/img/" alt="">
-                            </div>
-                            <a class="posts-title" href="@Url.Action("Details", "Post", new { id = item.Id })"><h3>@item.Title</h3></a>
-                            <p class="excert">
-                                @Html.Raw((item.Description.ToString().Length > 200) ? item.Description.ToString().Substring(0, 200) : item.Description.ToString())...
-                            </p>
-                            <a href="@Url.Action("Details", "Post", new { id = item.Id })" class="primary-btn">Daha Fazla Oku</a>
+                    <div class="col-lg-9 col-md-9 ">
+                        <div class="feature-img">
+                            <img class="img-fluid" src="~/img/" alt="">
                         </div>
+                        <a class="posts-title" href="@Url.Action("Details", "Post", new { id = item.Id })"><h3>@item.Title</h3></a>
+                        <img src="@(ViewBag.AssetsUrl)@item.Photo" style="width:300px;" /><br />
+                        <p class="excert">
+                            @Html.Raw((item.Description.ToString().Length > 200) ? item.Description.ToString().Substring(0, 200) : item.Description.ToString())...
+                        </p>
+                        <a href="@Url.Action("Details", "Post", new { id = item.Id })" class="primary-btn">Daha Fazla Oku</a>
+                    </div>
                     }
                 </div>
 
