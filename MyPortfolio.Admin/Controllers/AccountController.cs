@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyPortfolio.Admin.Models;
@@ -19,15 +20,29 @@ namespace MyPortfolio.Admin.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public AccountController():base(null)
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, INotificationService notificationService) : base(notificationService)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, INotificationService notificationService, ApplicationRoleManager roleManager) : base(notificationService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
         }
 
         public ApplicationSignInManager SignInManager
@@ -141,7 +156,19 @@ namespace MyPortfolio.Admin.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Roles = new SelectList(RoleManager.Roles.ToList(), "Id", "Name");
             return View();
+        }
+        private void CreateDefaultRoles()
+        {
+            if (!RoleManager.RoleExists("Admin"))
+            {
+                RoleManager.Create(new IdentityRole() { Name = "Admin" });
+            }
+            if (!RoleManager.RoleExists("User"))
+            {
+                RoleManager.Create(new IdentityRole() { Name = "User" });
+            }
         }
 
         //
@@ -149,14 +176,18 @@ namespace MyPortfolio.Admin.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string RoleId)
         {
             if (ModelState.IsValid)
             {
+                CreateDefaultRoles();
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var role = RoleManager.FindById(RoleId);
+                    UserManager.AddToRole(user.Id, role.Name);
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -169,6 +200,7 @@ namespace MyPortfolio.Admin.Controllers
                 }
                 AddErrors(result);
             }
+            ViewBag.Roles = new SelectList(RoleManager.Roles.ToList(), "Id", "Name", RoleId);
 
             // If we got this far, something failed, redisplay form
             return View(model);

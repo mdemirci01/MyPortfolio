@@ -1,4 +1,4 @@
-﻿    using MyPortfolio.Model;
+﻿using MyPortfolio.Model;
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,8 @@ namespace MyPortfolio.Admin.Controllers
             this.categoryService = categoryService;
         }
         // GET: Post
-        public ActionResult Index( )
+        [Authorize(Roles = "Admin")]
+        public ActionResult Index()
         {
             var post = postService.GetAll();
             return View(post);
@@ -41,22 +42,25 @@ namespace MyPortfolio.Admin.Controllers
                 {
                     string fileName = Path.GetFileName(upload.FileName);
                     string extension = Path.GetExtension(fileName).ToLower();
-                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif") { 
+                    if (extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif")
+                    {
                         string path = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], fileName);
                         upload.SaveAs(path);
                         post.Photo = fileName;
                         postService.Insert(post);
                         return RedirectToAction("index");
-                    } else
+                    }
+                    else
                     {
                         ModelState.AddModelError("Photo", "Dosya uzantısı .jpg, .jpeg, .png ya da .gif olmalıdır.");
                     }
-                } else
+                }
+                else
                 {
                     postService.Insert(post);
                     return RedirectToAction("index");
                 }
-                
+
             }
             ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
             return View(post);
@@ -95,13 +99,14 @@ namespace MyPortfolio.Admin.Controllers
                         ModelState.AddModelError("Photo", "Dosya uzantısı .jpg, .jpeg, .png ya da .gif olmalıdır.");
 
                     }
-                } else
+                }
+                else
                 {
                     // resim seçilip yüklenmese bile diğer bilgileri güncelle
                     postService.Update(post);
                     return RedirectToAction("index");
                 }
-                
+
 
             }
             ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
@@ -112,7 +117,7 @@ namespace MyPortfolio.Admin.Controllers
             postService.Delete(id);
             return RedirectToAction("index");
         }
-       
+
         public ActionResult Details(Guid id)
         {
             var post = postService.Find(id);
@@ -121,7 +126,7 @@ namespace MyPortfolio.Admin.Controllers
                 return HttpNotFound();
 
             }
-           
+
             return View(post);
         }
     }
