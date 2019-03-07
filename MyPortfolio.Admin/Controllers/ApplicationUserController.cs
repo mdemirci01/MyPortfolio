@@ -15,11 +15,12 @@ namespace MyPortfolio.Admin.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
-        public ApplicationUserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, INotificationService notificationService) : base(notificationService)
+        private ApplicationRoleManager _roleManager;
+        public ApplicationUserController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, INotificationService notificationService, ApplicationRoleManager roleManager) : base(notificationService)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -71,10 +72,12 @@ namespace MyPortfolio.Admin.Controllers
         public ActionResult Edit(string id)
         {
             var user = UserManager.FindById(id);
+            ViewBag.Roles = _roleManager.Roles.ToList();
+
             return View(user);
         }
         [HttpPost]
-        public ActionResult Edit(ApplicationUser user)
+        public ActionResult Edit(ApplicationUser user, string[] SelectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -83,8 +86,17 @@ namespace MyPortfolio.Admin.Controllers
                 model.Email = user.Email;
                 model.Photo = user.Photo;
                 UserManager.Update(model);
+
+                var oldRoles = model.Roles.Select(r => r.RoleId).ToList();
+                var rolesToRemove = _roleManager.Roles.Where(w => oldRoles.Contains(w.Id)).Select(r => r.Name).ToArray();
+                UserManager.RemoveFromRoles(user.Id, rolesToRemove);
+                var rolesToAdd = _roleManager.Roles.Where(w => SelectedRole.Contains(w.Id)).Select(r => r.Name).ToArray();
+                UserManager.AddToRoles(user.Id, rolesToAdd);
+
                 return RedirectToAction("Index");
             }
+            ViewBag.Roles = _roleManager.Roles.ToList();
+
             return View();
         }
     }
