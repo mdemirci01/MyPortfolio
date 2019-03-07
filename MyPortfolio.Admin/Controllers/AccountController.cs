@@ -156,6 +156,7 @@ namespace MyPortfolio.Admin.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            CreateDefaultRoles();
             ViewBag.Roles = new SelectList(RoleManager.Roles.ToList(), "Id", "Name");
             return View();
         }
