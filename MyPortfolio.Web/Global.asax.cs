@@ -46,6 +46,7 @@ namespace MyPortfolio.Web
 
             // generic repository geçici instance olarak register et
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerDependency();
+            builder.Register(c => new System.Security.Principal.GenericIdentity("MyUser")).As<System.Security.Principal.IIdentity>();
             builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerRequest();
             //servisleri register et
             builder.RegisterType(typeof(PostService)).As(typeof(IPostService)).InstancePerDependency();
