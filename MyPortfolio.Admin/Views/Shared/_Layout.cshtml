@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <title>@ViewBag.Title - MyPortfolio</title>
 </head>
 <body>
@@ -37,7 +38,7 @@
                         {
                             <li class="nav-item">
                                 <div id="custom-search" class="top-search-bar">
-                                    @Html.TextBox("name", null, new { @class = "form-control", placeholder="Arama.." })
+                                    @Html.TextBox("name", null, new { @class = "form-control", placeholder = "Arama.." })
                                 </div>
                             </li>
                             <li class="nav-item">
@@ -229,6 +230,18 @@
     <script src="/assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="/assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="/assets/libs/js/dashboard-ecommerce.js"></script>
+
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Turkish.json"
+                }
+            });
+        });
+    </script>
+
     @RenderSection("scripts", required: false)
     @RenderSection("sparklineRevenueScripts", required: false)
 </body>
