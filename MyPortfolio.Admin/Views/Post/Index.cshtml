@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyPortfolio.Model.Post>
+﻿@model IEnumerable<MyPortfolio.Admin.Models.PostViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -15,9 +15,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>   
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
         
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
@@ -31,9 +28,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>     
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>

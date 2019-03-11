@@ -1,4 +1,6 @@
-﻿using MyPortfolio.Model;
+﻿using AutoMapper;
+using MyPortfolio.Admin.Models;
+using MyPortfolio.Model;
 using MyPortfolio.Service;
 using System;
 using System.Collections.Generic;
@@ -23,18 +25,19 @@ namespace MyPortfolio.Admin.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            var post = postService.GetAll();
-            return View(post);
+            var posts = postService.GetAll();
+            var postViewModels = Mapper.Map<IEnumerable<PostViewModel>>(posts);
+            return View(postViewModels);
         }
         public ActionResult Create()
         {
-            var post = new Post();
+            var postViewModel = new PostViewModel();
             ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name");
-            return View(post);
+            return View(postViewModel);
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(Post post, HttpPostedFileBase upload)
+        public ActionResult Create(PostViewModel postViewModel, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -46,7 +49,8 @@ namespace MyPortfolio.Admin.Controllers
                     {
                         string path = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], fileName);
                         upload.SaveAs(path);
-                        post.Photo = fileName;
+                        postViewModel.Photo = fileName;
+                        var post = Mapper.Map<Post>(postViewModel);
                         postService.Insert(post);
                         return RedirectToAction("index");
                     }
@@ -57,28 +61,31 @@ namespace MyPortfolio.Admin.Controllers
                 }
                 else
                 {
+                    var post = Mapper.Map<Post>(postViewModel);
                     postService.Insert(post);
                     return RedirectToAction("index");
                 }
 
             }
-            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
-            return View(post);
+
+            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", postViewModel.CategoryId);
+            return View(postViewModel);
         }
         public ActionResult Edit(Guid id)
         {
             var post = postService.Find(id);
-            if (post == null)
+            var postViewModel = Mapper.Map<PostViewModel>(post);
+            if (postViewModel == null)
             {
                 return HttpNotFound();
 
             }
-            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
-            return View(post);
+            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", postViewModel.CategoryId);
+            return View(postViewModel);
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Post post, HttpPostedFileBase upload)
+        public ActionResult Edit(PostViewModel postViewModel, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +97,8 @@ namespace MyPortfolio.Admin.Controllers
                     {
                         string path = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], fileName);
                         upload.SaveAs(path);
-                        post.Photo = fileName;
+                        postViewModel.Photo = fileName;
+                        var post = Mapper.Map<Post>(postViewModel);
                         postService.Update(post);
                         return RedirectToAction("index");
                     }
@@ -103,14 +111,15 @@ namespace MyPortfolio.Admin.Controllers
                 else
                 {
                     // resim seçilip yüklenmese bile diğer bilgileri güncelle
+                    var post = Mapper.Map<Post>(postViewModel);
                     postService.Update(post);
                     return RedirectToAction("index");
                 }
 
 
             }
-            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", post.CategoryId);
-            return View(post);
+            ViewBag.CategoryId = new SelectList(categoryService.GetAll(), "Id", "Name", postViewModel.CategoryId);
+            return View(postViewModel);
         }
         public ActionResult Delete(Guid id)
         {
@@ -121,13 +130,14 @@ namespace MyPortfolio.Admin.Controllers
         public ActionResult Details(Guid id)
         {
             var post = postService.Find(id);
-            if (post == null)
+            var postViewModel = Mapper.Map<PostViewModel>(post);
+            if (postViewModel == null)
             {
                 return HttpNotFound();
 
             }
 
-            return View(post);
+            return View(postViewModel);
         }
     }
 }
