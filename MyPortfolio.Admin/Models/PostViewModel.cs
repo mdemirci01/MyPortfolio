@@ -15,5 +15,6 @@ namespace MyPortfolio.Admin.Models
         public Category Category { get; set; }
         public string Photo { get; set; }
         public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
     }
 }

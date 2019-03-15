@@ -35,9 +35,9 @@ namespace MyPortfolio.Data
             return entities.FirstOrDefault(where);
         }
 
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(bool? isActive = null)
         {
-            return entities.ToList();
+            return entities.Where(w => isActive != null?w.IsActive == isActive:true).ToList();
         }
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> where)

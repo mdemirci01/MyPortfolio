@@ -16,6 +16,7 @@ namespace MyPortfolio.Service
         void Delete(Guid id);
         Post Find(Guid id);
         IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAllActiveOnes();
         IEnumerable<Post> GetAllByTitle(string title);
         IEnumerable<Post> Search(string title);
     }
@@ -50,6 +51,12 @@ namespace MyPortfolio.Service
         {
             return postRepository.GetAll();
         }
+
+        public IEnumerable<Post> GetAllActiveOnes()
+        {
+            return postRepository.GetAll(true);
+        }
+
 
         public IEnumerable<Post> GetAllByTitle(string title)
         {

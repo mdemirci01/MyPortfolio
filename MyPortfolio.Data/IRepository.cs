@@ -15,7 +15,7 @@ namespace MyPortfolio.Data
         void Delete(T entity);
         T Find(Guid id);
         T Find(Expression<Func<T, bool>> where);
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(bool? isActive = null);
         IEnumerable<T> GetAll(Expression<Func<T, bool>> where);
     }
 }
