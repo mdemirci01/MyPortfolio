@@ -9,6 +9,10 @@ namespace MyPortfolio.Model
 {
     public class Project:BaseEntity
     {
+        public Project()
+        {
+            ProjectFiles = new HashSet<ProjectFile>();
+        }
         [Display(Name="Proje Adı")]
         public string Name { get; set; }
 
@@ -36,6 +40,6 @@ namespace MyPortfolio.Model
 
         [Display(Name = "Kullanılan Teknoloji")]
         public virtual Technology Technology { get; set; }
-
+        public virtual ICollection<ProjectFile> ProjectFiles { get; set; }
     }
 }
