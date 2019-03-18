@@ -48,6 +48,24 @@
         <dd>
             @Html.DisplayFor(model => model.Photo)
         </dd>
+        <dt>
+            <label for="Uploads">
+                Proje Dosyaları
+            </label>
+            </dt>
+        <dd>
+            
+
+                <div>
+                    @foreach (var item in Model.ProjectFiles)
+                    {
+                        <a href="@(ViewBag.AssetsUrl)@item.FileName">@item.FileName</a><br />
+                    }
+                   
+                </div>
+            
+        </dd>
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.Year)

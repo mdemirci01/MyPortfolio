@@ -84,11 +84,42 @@ namespace MyPortfolio.Admin.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Project project)
+        public ActionResult Edit(Project project, HttpPostedFileBase[] Uploads)
         {
             if (ModelState.IsValid)
             {
+
                 var model = projectService.Find(project.Id);
+                if (Uploads != null && Uploads.Length >= 1)
+                {
+                    model.ProjectFiles.Clear();
+                    foreach (var item in Uploads)
+                    {
+                        if (item != null && item.ContentLength > 0)
+                        {
+                            var fileName = Path.GetFileName(item.FileName);
+                            var extension = Path.GetExtension(fileName).ToLower();
+                            if (extension == ".jpg" || extension == ".gif" || extension == ".png" || extension == ".pdf" || extension == ".doc" || extension == ".docx")
+                            {
+                                var path = Path.Combine(ConfigurationManager.AppSettings["uploadPath"], fileName);
+                                item.SaveAs(path);
+                                var file = new ProjectFile();
+                                file.Id = Guid.NewGuid();
+                                file.FileName = fileName;
+                                file.CreatedAt = DateTime.Now;
+                                file.CreatedBy = User.Identity.Name;
+                                file.UpdatedAt = DateTime.Now;
+                                file.UpdatedBy = User.Identity.Name;
+                                file.IsActive = true;
+                                model.ProjectFiles.Add(file);
+                            }
+                        }
+                    }
+                }
+
+
+
+                 
                 model.Name = project.Name;
                 model.ShortDescription = project.ShortDescription;
                 model.Description = project.Description;
