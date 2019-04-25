@@ -29,6 +29,8 @@ namespace MyPortfolio.Data
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Newsletter> Newsletters { get; set; }
         public virtual DbSet<Technology> Technologies { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
